@@ -99,6 +99,6 @@ int MemberManagement::addUser(string username, string password, int role)
 
 int MemberManagement::removeUser(string, string)
 {
-    Authentication a;
-    int flag = a.verify(username, password);
+    //Authentication a;
+    //int flag = a.verify(username, password);
 }

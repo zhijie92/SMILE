@@ -22,6 +22,7 @@ FacilitiesManagement facManage;
 
 int main()
 {
+    facManage.fileToArray();
     mainMenu();
 }
 
@@ -209,13 +210,21 @@ void facilitiesManagement()
                     getline (cin, name);
                     cout << "Facility Description: ";
                     getline (cin, description);
-                    check = facManage.addRecord(name, description);
-                    if (check != 0)
+                    check = facManage.addFacility(name, description);
+                    if (check == -1)
                     {
                         cout << "The keyed in Facility already exist!" << endl;
+                        pressEnter();
                     }
                    break;
-            case 2: cout << "delete" << endl;
+            case 2: cout << "Facility Name: ";
+                    getline (cin, name);
+                    check = facManage.removeFacility(name);
+                    if (check == -1)
+                    {
+                        cout << "The keyed in Facility does not exist!" << endl;
+                        pressEnter();
+                    }
                    break;
             case 3: cout << "update" << endl;
                    break;
