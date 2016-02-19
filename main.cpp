@@ -117,7 +117,7 @@ void adminMenu()
                    break;
             case 3: cout << "test3" << endl;
                    break;
-            case 4: cout << "test3" << endl;
+            case 4: cout << "test4" << endl;
                    break;     
             case 9:
                    break;
