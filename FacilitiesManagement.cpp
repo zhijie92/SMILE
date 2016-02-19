@@ -25,12 +25,46 @@ FacilitiesManagement::~FacilitiesManagement()
 {
 }
 
-void FacilitiesManagement::addRecord(string fac_name, string fac_desc)
+int FacilitiesManagement::checkExists (string str)
 {
-    fstream outfile;
-    outfile.open("facilitiesDB.txt",ios::out | ios::app);
+    fstream afile;
+    afile.open ("facilitiesDB.txt", ios::in);
     
-    outfile << fac_name << "," << fac_desc << endl;
+    FacilitiesDB facilities[500];
+    
+    int size = 0;
+    while (getline(afile, facilities[size].name, ','))
+    {
+        getline(afile,facilities[size].description);
+        size++;
+    }
+    afile.close();
+    
+    for (int i=0; i < size; i++)
+    {
+        if (facilities[i].name == str)
+        {
+            return -1;
+        }
+    }
+    return 0;
+}
+
+int FacilitiesManagement::addRecord(string fac_name, string fac_desc)
+{
+    int check = checkExists (fac_name);
+    
+    if (check != -1)
+    {
+        fstream outfile;
+        outfile.open("facilitiesDB.txt",ios::out | ios::app);
+
+        outfile << fac_name << "," << fac_desc << endl;
+        outfile.close();
+        return 0;
+    }
+    else
+        return -1;
 }
 /*
 void FacilitiesManagement::removeRecord(string facId)

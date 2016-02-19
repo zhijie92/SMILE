@@ -13,9 +13,12 @@
 #include "main.h"
 #include "Authentication.h"
 #include "MemberManagement.h"
+#include "Facilities.h"
+#include "FacilitiesManagement.h" 
 
 Authentication authenticate;
 MemberManagement memManage;
+FacilitiesManagement facManage;
 
 int main()
 {
@@ -191,9 +194,19 @@ void facilitiesManagement()
         cin >> options;
         cin.clear();
         cin.ignore(300,'\n');
+        string name, description;
+        int check;
         switch (options)
         {
-            case 1: cout << "add" << endl;
+            case 1: cout << "Facility Name: ";
+                    getline (cin, name);
+                    cout << "Facility Description: ";
+                    getline (cin, description);
+                    check = facManage.addRecord(name, description);
+                    if (check != 0)
+                    {
+                        cout << "The keyed in Facility already exist!" << endl;
+                    }
                    break;
             case 2: cout << "delete" << endl;
                    break;

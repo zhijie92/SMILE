@@ -27,7 +27,8 @@ public:
     FacilitiesManagement(const FacilitiesManagement& orig);
     virtual ~FacilitiesManagement();
     
-    void addRecord(string fac_name, string fac_desc);
+    int checkExists (string str);
+    int addRecord(string fac_name, string fac_desc);
     void updateFacilityID(string id);
     void printAllAvailableRecords();
     void printSummaryRecords();
@@ -43,7 +44,11 @@ public:
     string retrieveCurrentDate();
     bool FacilityIDExists(string id);
 private:
-
+    struct FacilitiesDB 
+    {
+        string name;
+        string description;
+    };
 };
 
 #endif /* FACILITIESMANAGEMENT_H */
