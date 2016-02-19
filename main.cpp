@@ -117,6 +117,8 @@ void adminMenu()
                    break;
             case 3: cout << "test3" << endl;
                    break;
+            case 4: cout << "test3" << endl;
+                   break;     
             case 9:
                    break;
             default: cout << "Please enter a valid option" << endl;
