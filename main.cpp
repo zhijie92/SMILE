@@ -17,7 +17,6 @@ Authentication authenticate;
 
 int main()
 {
-    cout << "hihi" << endl;
     mainMenu();
 }
 
