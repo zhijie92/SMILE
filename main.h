@@ -24,5 +24,7 @@ void makePartition();
 int mainMenu();
 void adminMenu();
 void memberMenu();
+void facilitiesManagement();
+void memberManagement();
 #endif /* MAIN_H */
 
