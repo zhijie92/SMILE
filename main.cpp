@@ -27,6 +27,13 @@ void makePartition()
     cout << "----------------------------------------------------------------";
     cout << endl;
 }
+
+void pressEnter()
+{
+    cout << "Press enter to continue..." << endl;
+    cin.ignore(300,'\n');
+}
+
 int mainMenu()
 {
     makePartition();
@@ -60,7 +67,7 @@ int mainMenu()
         do
         {
             cout << "Username: ";
-            cin >> username;   
+            cin >> username;
         }while (username.empty());
         do
         {
@@ -232,11 +239,28 @@ void memberManagement()
         cin.ignore(300,'\n');
         switch (options)
         {
-            case 1: do
+            case 1: int isExist;
+                    do
                     {
-                        cout << "Username: ";
-                        cin >> newUser;   
-                    }while (newUser.empty());
+                        newPassword = "";
+                        if (isExist == -2)
+                        {
+                            cout << endl;
+                            cout << "-----------------------------------------------" << endl;
+                            cout << "Username: " << newUser << " already exists. " << endl;
+                            cout << "-----------------------------------------------" << endl;
+                            cout << endl;
+                        }
+                        
+                        do
+                        {
+                            cout << "Username: ";
+                            cin >> newUser;
+                        }while (newUser.empty());
+                        
+                        // check for existing username
+                        isExist = authenticate.verify(newUser, newPassword);
+                    } while (isExist == -2);
                    
                     do
                     {
@@ -251,9 +275,12 @@ void memberManagement()
                         cout << "For club member account type, key in 2" << endl;
                         cout << "Role: ";
                         cin >> newRole;
+                        cin.clear();
+                        cin.ignore(300,'\n');
                     }while (newRole != 1 && newRole != 2);
                     
                     memManage.addUser(newUser, newPassword, newRole);
+                    pressEnter();
                    break;
             case 2: cout << "delete" << endl;
                    break;
