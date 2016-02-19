@@ -23,26 +23,26 @@ using namespace std;
 
 class Authentication
 {
-public:
-    Authentication();
-    Authentication(const Authentication& orig);
-    virtual ~Authentication();
-    string getUsername();
-    string getPassword();
-    void setUsername(string);
-    void setPassword(string);
-    int verify(string, string);
-    
-private:
-    string username; //store user's username
-    string password; //store user's password
-    
-    struct UserDB //store all the role, user and pass from the DB
-    {
-        int role; //1 for club manager - 2 for club member
-        string user;
-        string pass;
-    };
+    public:
+        Authentication();
+        Authentication(const Authentication& orig);
+        virtual ~Authentication();
+        string getUsername();
+        string getPassword();
+        void setUsername(string);
+        void setPassword(string);
+        int verify(string, string);
+
+    private:
+        string username; //store user's username
+        string password; //store user's password
+
+        struct UserDB //store all the role, user and pass from the DB
+        {
+            int role; //1 for club manager - 2 for club member
+            string user;
+            string pass;
+        };
 };
 
 #endif /* AUTHENTICATION_H */

@@ -12,8 +12,10 @@
  */
 #include "main.h"
 #include "Authentication.h"
+#include "MemberManagement.h"
 
 Authentication authenticate;
+MemberManagement memManage;
 
 int main()
 {
@@ -209,6 +211,10 @@ void facilitiesManagement()
 void memberManagement()
 {
     int options;
+    string newUser;
+    string newPassword;
+    int newRole;
+    
     do
     {
         cout << setw(50) << "Country Club Facilities Booking System" << endl;
@@ -226,7 +232,28 @@ void memberManagement()
         cin.ignore(300,'\n');
         switch (options)
         {
-            case 1: cout << "add" << endl;
+            case 1: do
+                    {
+                        cout << "Username: ";
+                        cin >> newUser;   
+                    }while (newUser.empty());
+                   
+                    do
+                    {
+                        cout << "Password: ";
+                        cin >> newPassword;
+                    }while (newPassword.empty());
+                    
+                    do
+                    {
+                        cout << endl;
+                        cout << "For club manager account type, key in 1" << endl;
+                        cout << "For club member account type, key in 2" << endl;
+                        cout << "Role: ";
+                        cin >> newRole;
+                    }while (newRole != 1 && newRole != 2);
+                    
+                    memManage.addUser(newUser, newPassword, newRole);
                    break;
             case 2: cout << "delete" << endl;
                    break;
