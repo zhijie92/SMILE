@@ -15,8 +15,7 @@
 
 Authentication::Authentication() 
 {
-   // this->username = username;
-   // this->password = password;
+    
 }
 
 Authentication::Authentication(const Authentication& orig)
@@ -84,6 +83,5 @@ int Authentication::verify(string username, string password)
             }
         }
     }
-    return -1;
-    
+    return -1; 
 }

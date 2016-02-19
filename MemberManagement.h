@@ -34,6 +34,7 @@ class MemberManagement
         void setPassword(string);
         void setRole(int);
         int addUser(string, string, int);
+        int removeUser(string, string);
         
     private:
         string username;

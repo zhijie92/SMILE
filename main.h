@@ -21,6 +21,7 @@
 using namespace std;
 
 void makePartition();
+void pressEnter();
 int mainMenu();
 void adminMenu();
 void memberMenu();

@@ -32,6 +32,7 @@ class Authentication
         void setUsername(string);
         void setPassword(string);
         int verify(string, string);
+        int index(string, string);
 
     private:
         string username; //store user's username

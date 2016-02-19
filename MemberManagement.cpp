@@ -67,8 +67,7 @@ int MemberManagement::addUser(string username, string password, int role)
     int size=0;
     char rubbish;
     
-    outfile << '\n'
-            << role << ','
+    outfile << role << ','
             << username << ','
             << password
             << endl;
@@ -95,4 +94,11 @@ int MemberManagement::addUser(string username, string password, int role)
         cout << "...added succesfully..." << endl;
         cout << endl;
     }
+    return 0;
+}
+
+int MemberManagement::removeUser(string, string)
+{
+    Authentication a;
+    int flag = a.verify(username, password);
 }
