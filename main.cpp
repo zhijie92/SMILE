@@ -91,29 +91,29 @@ int mainMenu()
     }
 }
 void adminMenu()
-{
-    makePartition();
-    cout << setw(50) << "Country Club Facilities Booking System" << endl;
-    cout << setw(49) << "+++++++  Club Manager's Menu  +++++++" << endl;   
-    makePartition();
-    cout << "    1.) Facilities Management Sub-system" << endl;
-    cout << "    2.) Member Management Sub-system" << endl;
-    cout << "    3.) Report Sub-system" << endl;
-    cout << "    4.) Help" << endl;
-    cout << "    9.) Quit" << endl;
-    
+{   
     int options;
     do
     {
+        makePartition();
+        cout << setw(50) << "Country Club Facilities Booking System" << endl;
+        cout << setw(49) << "+++++++  Club Manager's Menu  +++++++" << endl;   
+        makePartition();
+        cout << "    1.) Facilities Management Sub-system" << endl;
+        cout << "    2.) Member Management Sub-system" << endl;
+        cout << "    3.) Report Sub-system" << endl;
+        cout << "    4.) Help" << endl;
+        cout << "    9.) Quit" << endl;
+       
         cout << "Option :";
         cin >> options;
         cin.clear();
         cin.ignore(300,'\n');
         switch (options)
         {
-            case 1: cout << "test" << endl;
+            case 1: facilitiesManagement();
                    break;
-            case 2: cout << "test2" << endl;
+            case 2: memberManagement();
                    break;
             case 3: cout << "test3" << endl;
                    break;
@@ -127,23 +127,23 @@ void adminMenu()
 }
 
 void memberMenu()
-{
-    makePartition();
-    cout << setw(50) << "Country Club Facilities Booking System" << endl;
-    cout << setw(46) << "+++++++  Member's Menu  +++++++" << endl;
-    makePartition();
-    cout << "    1.) Update Particulars" << endl;
-    cout << "    2.) Upgrade Ranking" << endl;
-    cout << "    3.) Search Portal Sub-system" << endl;
-    cout << "    4.) View Bookings" << endl;
-    cout << "    5.) Delete Booking" << endl;
-    cout << "    6.) Booking Preferences" << endl;
-    cout << "    7.) Help" << endl;
-    cout << "    9.) Quit" << endl;
-    
+{   
     int options;
     do
     {
+        makePartition();
+        cout << setw(50) << "Country Club Facilities Booking System" << endl;
+        cout << setw(46) << "+++++++  Member's Menu  +++++++" << endl;
+        makePartition();
+        cout << "    1.) Update Particulars" << endl;
+        cout << "    2.) Upgrade Ranking" << endl;
+        cout << "    3.) Search Portal Sub-system" << endl;
+        cout << "    4.) View Bookings" << endl;
+        cout << "    5.) Delete Booking" << endl;
+        cout << "    6.) Booking Preferences" << endl;
+        cout << "    7.) Help" << endl;
+        cout << "    9.) Quit" << endl;
+        
         cout << "Option :";
         cin >> options;
         cin.clear();
@@ -164,6 +164,76 @@ void memberMenu()
                    break;
             case 7: cout << "test5" << endl;
                    break; 
+            case 9:
+                   break;
+            default: cout << "Please enter a valid option" << endl;
+        }
+    }while (options != 9);
+}
+
+void facilitiesManagement()
+{
+    int options;
+    do
+    {
+        cout << setw(50) << "Country Club Facilities Booking System" << endl;
+        cout << setw(49) << "++ Facilities Management Sub-system ++" << endl;   
+        makePartition();
+        cout << "    1.) Add facilities" << endl;
+        cout << "    2.) Delete facilities" << endl;
+        cout << "    3.) Update facilities" << endl;
+        cout << "    4.) View facilities" << endl;
+        cout << "    9.) Back to main menu" << endl;
+
+        cout << "Option :";
+        cin >> options;
+        cin.clear();
+        cin.ignore(300,'\n');
+        switch (options)
+        {
+            case 1: cout << "add" << endl;
+                   break;
+            case 2: cout << "delete" << endl;
+                   break;
+            case 3: cout << "update" << endl;
+                   break;
+            case 4: cout << "view" << endl;
+                   break;     
+            case 9:
+                   break;
+            default: cout << "Please enter a valid option" << endl;
+        }
+    }while (options != 9);
+}
+
+void memberManagement()
+{
+    int options;
+    do
+    {
+        cout << setw(50) << "Country Club Facilities Booking System" << endl;
+        cout << setw(49) << "++++ Member Management Sub-system ++++" << endl;   
+        makePartition();
+        cout << "    1.) Add member" << endl;
+        cout << "    2.) Delete member" << endl;
+        cout << "    3.) List all Club Member" << endl;
+        cout << "    4.) List all Club Manager" << endl;
+        cout << "    9.) Back to main menu" << endl;
+
+        cout << "Option :";
+        cin >> options;
+        cin.clear();
+        cin.ignore(300,'\n');
+        switch (options)
+        {
+            case 1: cout << "add" << endl;
+                   break;
+            case 2: cout << "delete" << endl;
+                   break;
+            case 3: cout << "List" << endl;
+                   break;
+            case 4: cout << "List" << endl;
+                   break;     
             case 9:
                    break;
             default: cout << "Please enter a valid option" << endl;
