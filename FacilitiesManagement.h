@@ -38,6 +38,7 @@ private:
     {
         string name;
         string description;
+        double rates;
     }facilities[100];
 };
 

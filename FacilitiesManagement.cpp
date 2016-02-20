@@ -17,6 +17,7 @@ int size=0;
 
 FacilitiesManagement::FacilitiesManagement()
 {
+    fileToArray();
 }
 
 FacilitiesManagement::FacilitiesManagement(const FacilitiesManagement& orig)

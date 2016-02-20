@@ -17,14 +17,15 @@
 #include "FacilitiesManagement.h" 
 #include "User.h"
 #include "MemberProfile.h"
+#include "Booking.h"
 Authentication authenticate;
 MemberManagement memManage;
 FacilitiesManagement facManage;
+Booking booking;
 User u;
 MemberProfile memProf;
 int main()
 {
-    facManage.fileToArray();
     mainMenu();
 }
 
@@ -157,10 +158,8 @@ void memberMenu(string username)
         cout << "    2.) Update Particulars" << endl;
         cout << "    3.) Upgrade Ranking" << endl;
         cout << "    4.) Search Portal Sub-system" << endl;
-        cout << "    5.) View Bookings" << endl;
-        cout << "    6.) Delete Booking" << endl;
-        cout << "    7.) Booking Preferences" << endl;
-        cout << "    8.) Help" << endl;
+        cout << "    5.) Bookings Menu" << endl;
+        cout << "    6.) Help" << endl;
         cout << "    9.) Quit" << endl;
         
         cout << "Option :";
@@ -177,11 +176,9 @@ void memberMenu(string username)
                    break;
             case 4: cout << "test4" << endl;
                    break;
-            case 5: cout << "test5" << endl;
+            case 5: bookingMenu();
                    break;   
             case 6: cout << "test4" << endl;
-                   break;
-            case 7: cout << "test5" << endl;
                    break; 
             case 9:
                    break;
@@ -347,4 +344,59 @@ void viewProfile(string username)
 {
     memProf.displayParticulars(username);
     pressEnter();
+}
+
+void bookingMenu()
+{   
+    string name;
+    int options, month, day, check;
+    do
+    {
+        makePartition();
+        cout << setw(50) << "Country Club Facilities Booking System" << endl;
+        cout << setw(46) << "+++++++  Booking Menu  +++++++" << endl;
+        makePartition();
+        cout << "    1.) Make Booking" << endl;
+        cout << "    2.) View Booking" << endl;
+        cout << "    3.) Cancel Booking" << endl;
+        cout << "    4.) Booking Preferences" << endl;
+        cout << "    9.) Quit" << endl;
+        
+        cout << "Option :";
+        cin >> options;
+        cin.clear();
+        cin.ignore(300,'\n');
+        switch (options)
+        { 
+            case 1: cout << "Facility Name: ";
+                    getline (cin, name);
+                    cout << "Day (e.g. 8 for 8th): ";
+                    cin >> day;
+                    cout << "Month (e.g. 12 for December): ";
+                    cin >> month;
+                    cin.clear();
+                    cin.ignore(100, '\n');
+                    check = booking.newBooking(name, month, day);
+                    if (check == -1)
+                    {
+                        cout << name << " on " << day << "/" << month << " has already been booked!" << endl;
+                        pressEnter();
+                    }
+                    else if (check == -2)
+                    {
+                        cout << "The keyed in Facility does not exist!" << endl;
+                        pressEnter();
+                    }    
+                   break;
+            case 2: cout << "test2" << endl;
+                   break;
+            case 3: cout << "test3" << endl;
+                   break;
+            case 4: cout << "test4" << endl;
+                   break;
+            case 9:
+                   break;
+            default: cout << "Please enter a valid option" << endl;
+        }
+    }while (options != 9);
 }
