@@ -31,7 +31,7 @@ public:
     int checkExists (string str);
     int addFacility(string fac_name, string fac_desc);
     int removeFacility(string fac_name);
-    void editFacility();
+    int editFacility(string fac_name, string new_name, string fac_desc);
     void printAllFacilities();
 private:
     struct FacilitiesDB 

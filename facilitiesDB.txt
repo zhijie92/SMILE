@@ -1,2 +1,3 @@
-Tennis,Tennis is a fun sport!
-Tennis,asd
+Tennis, Tennis is a sport
+Karaoke,Karaoke is fun
+Table Tennis,Table Tennis Room
