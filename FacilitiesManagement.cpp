@@ -133,3 +133,12 @@ int FacilitiesManagement::editFacility(string fac_name, string new_name, string 
     else
         return -1;
 }
+void FacilitiesManagement::printAllFacilities()
+{
+    for (int i=0; i < size; i++)
+    {
+            cout << "Name: '" << facilities[i].name << "' " 
+                 << "Description: '" << facilities[i].description << "'"
+                 << endl;
+    }
+}

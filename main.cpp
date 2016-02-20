@@ -249,7 +249,8 @@ void facilitiesManagement()
                         pressEnter();
                     }
                    break;
-            case 4: cout << "view" << endl;
+            case 4: facManage.printAllFacilities();
+                    pressEnter();
                    break;     
             case 9:
                    break;
