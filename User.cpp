@@ -38,20 +38,23 @@ int User::storeData()
     
     int tempSize=0;
     char rubbish;
-    while (afile >> access[size].role)
+    while (afile >> access[tempSize].role)
     {
         afile.get(rubbish);
-        getline(afile,access[size].user,',');
-        getline(afile,access[size].pass);
+        getline(afile,access[tempSize].user,',');
+        getline(afile,access[tempSize].pass);
         tempSize++;
     }
     this -> size = tempSize;
+    
+    afile.close();
+    
     return tempSize;
 }
-
+/*
 int User::accessData(string tempUser)
 {
-    for (int i = 0; i <= this -> size; i++)
+    for (int i = 0; i < size; i++)
     {
         if (access[i].role == 2) // if member
         {
@@ -61,4 +64,4 @@ int User::accessData(string tempUser)
             }
         }
     }
-}
+}*/

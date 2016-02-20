@@ -16,10 +16,12 @@
 #include "Facilities.h"
 #include "FacilitiesManagement.h" 
 #include "User.h"
+#include "MemberProfile.h"
 Authentication authenticate;
 MemberManagement memManage;
 FacilitiesManagement facManage;
 User u;
+MemberProfile memProf;
 int main()
 {
     facManage.fileToArray();
@@ -82,6 +84,7 @@ int mainMenu()
         cout << endl;
         
         options = authenticate.verify(username, password, u);
+        
         flag = false;
     //go through authentication class for user and password and return 
     }while ((options == -1 || options == -2)  && counter++ < 2);
@@ -98,14 +101,14 @@ int mainMenu()
     
     switch (options)
     {
-        case 1: adminMenu();
+        case 1: clubManagerMenu();
                 break;
-        case 2: memberMenu();
+        case 2: memberMenu(username);
                 break;
         default: cout << "Error" << endl;
     }
 }
-void adminMenu()
+void clubManagerMenu()
 {   
     int options;
     do
@@ -141,7 +144,7 @@ void adminMenu()
     }while (options != 9);
 }
 
-void memberMenu()
+void memberMenu(string username)
 {   
     int options;
     do
@@ -150,13 +153,14 @@ void memberMenu()
         cout << setw(50) << "Country Club Facilities Booking System" << endl;
         cout << setw(46) << "+++++++  Member's Menu  +++++++" << endl;
         makePartition();
-        cout << "    1.) Update Particulars" << endl;
-        cout << "    2.) Upgrade Ranking" << endl;
-        cout << "    3.) Search Portal Sub-system" << endl;
-        cout << "    4.) View Bookings" << endl;
-        cout << "    5.) Delete Booking" << endl;
-        cout << "    6.) Booking Preferences" << endl;
-        cout << "    7.) Help" << endl;
+        cout << "    1.) View profile" << endl;
+        cout << "    2.) Update Particulars" << endl;
+        cout << "    3.) Upgrade Ranking" << endl;
+        cout << "    4.) Search Portal Sub-system" << endl;
+        cout << "    5.) View Bookings" << endl;
+        cout << "    6.) Delete Booking" << endl;
+        cout << "    7.) Booking Preferences" << endl;
+        cout << "    8.) Help" << endl;
         cout << "    9.) Quit" << endl;
         
         cout << "Option :";
@@ -165,7 +169,7 @@ void memberMenu()
         cin.ignore(300,'\n');
         switch (options)
         {
-            case 1: cout << "test" << endl;
+            case 1: viewProfile(username);
                    break;
             case 2: cout << "test2" << endl;
                    break;
@@ -185,6 +189,10 @@ void memberMenu()
         }
     }while (options != 9);
 }
+
+/*--------------------------------------------------------------------------------*/
+// CLUB MANAGER FUNCTIONS
+/*--------------------------------------------------------------------------------*/
 
 void facilitiesManagement()
 {
@@ -317,4 +325,14 @@ void memberManagement()
             default: cout << "Please enter a valid option" << endl;
         }
     }while (options != 9);
+}
+
+/*--------------------------------------------------------------------------------*/
+// CLUB MEMBER FUNCTIONS
+/*--------------------------------------------------------------------------------*/
+
+void viewProfile(string username)
+{
+    memProf.displayParticulars(username);
+    pressEnter();
 }

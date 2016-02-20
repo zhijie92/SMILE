@@ -18,6 +18,8 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <iomanip>
+#include <cstdlib>
 
 using namespace std;
 
@@ -26,22 +28,10 @@ class MemberProfile: public User
     public:
         MemberProfile();
         MemberProfile(const MemberProfile& orig);
-        virtual ~MemberProfile();
-       
-        string getName();
-        string getNric();
-        char getGender();
-        string getAddress();
-        string getBookingPreference();
-        bool getNotification();
+        virtual ~MemberProfile();    
         
-        void setName(string);
-        void setNric(string);
-        void setGender(char);
-        void setAddress(string);
-        void setBookingPreference(string);
-        void setNotification(bool);
-        
+        int index(string);
+        void memberToArray();
         void displayParticulars(string);
         void updateParticulars(string); //takes in unique NRIC 
         void upgradeRanking();
@@ -49,20 +39,27 @@ class MemberProfile: public User
         void amendBooking();
 
     protected:
+        int totalMember;
+        
+        //dd-mm-yyyy
         struct Date
         {
             int day;
             int month;
             int year;
         };
-        string username;
-        string name;
-        string nric;
-        Date dob;
-        char gender; // m or f
-        string address;
-        string bookingPreference;
-        bool notification;
+        
+        struct Profile
+        {
+            string username;
+            string name;
+            string nric;
+            Date dob;
+            char gender; // m or f
+            string address;
+            string bookingPreference;
+            bool notification;
+        }memProfile[MAX];
 };
 
 #endif /* MEMBERPROFILE_H */

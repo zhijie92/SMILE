@@ -23,9 +23,14 @@ using namespace std;
 void makePartition();
 void pressEnter();
 int mainMenu();
-void adminMenu();
-void memberMenu();
+void clubManagerMenu();
+void memberMenu(string);
+
+// manager menu
 void facilitiesManagement();
 void memberManagement();
+
+// member menu
+void viewProfile(string);
 #endif /* MAIN_H */
 

@@ -26,67 +26,86 @@ MemberProfile::~MemberProfile()
 {
 }
 
-string MemberProfile::getName()
+void MemberProfile::memberToArray()
 {
-    return name;
-}
-string MemberProfile::getNric()
-{
-    return nric;
-}
-
-char MemberProfile::getGender()
-{
-    return gender;
-}
-
-string MemberProfile::getAddress()
-{
-    return address;
-}
-
-string MemberProfile::getBookingPreference()
-{
-    return bookingPreference;
-}
-
-bool MemberProfile::getNotification()
-{
-    return notification;
-}
-        
-void MemberProfile::setName(string name)
-{
-    name = name;
-}
-void MemberProfile::setNric(string nric)
-{
-    nric = nric;
-}
-
-void MemberProfile::setGender(char gender)
-{
-    gender = gender;
-}
-
-void MemberProfile::setAddress(string address)
-{
-    address = address;
-}
-
-void MemberProfile::setBookingPreference(string bookingPreference)
-{
-    bookingPreference = bookingPreference;
+    fstream afile;
+    afile.open("memberDB.txt",ios::in);
+    
+    if (!afile)
+    {
+        cout << "MemberDB Opened for reading fail" << endl;
+    }
+    
+    int size = 0;
+    char rubbish;
+    
+    while (afile >> memProfile[size].username)
+    {
+        afile.get(rubbish);
+        getline(afile,memProfile[size].name);
+        getline(afile,memProfile[size].nric);
+        //dd-mm-yyyy
+        afile >> memProfile[size].dob.day;
+        afile.get(rubbish);
+        afile >> memProfile[size].dob.month;
+        afile.get(rubbish);
+        afile >> memProfile[size].dob.year;
+        afile.get(rubbish);
+        getline(afile,memProfile[size].address);
+        getline(afile,memProfile[size].bookingPreference);
+        afile >> memProfile[size].notification;
+        afile.get(rubbish);
+        afile.get(rubbish);
+    
+        size++;
+    }
+    
+    cout << memProfile[0].name << endl;
+     cout << setw(25) << left << "Username: " << memProfile[1].username << endl;
+    
+    cout << setw(25) << left << "Name: " << memProfile[1].name << endl;
+    cout << setw(25) << left << "Nric: " << memProfile[1].nric << endl;
+    cout << setw(25) << left << "Date of birth: " << memProfile[1].dob.day 
+                             << "/" << memProfile[1].dob.month 
+                             << "/" << memProfile[1].dob.year << endl;
+    cout << setw(25) << left << "Address: " << memProfile[1].address << endl;
+    cout << setw(25) << left << "Booking preference: " << memProfile[1].bookingPreference << endl;
+    cout << setw(25) << left << "Want notification?: " <<  memProfile[1].notification << endl;
+    afile.close();
+    this -> totalMember = size+1;
+    
 }
 
-void MemberProfile::setNotification(bool notification)
+int MemberProfile::index(string tempUser)
 {
-    notification = notification;
+    memberToArray();
+    for (int i = 0; i < this -> totalMember; i++)
+    {
+        if (tempUser == memProfile[i].username)
+        {
+            return i;
+        }
+    }
 }
 
-/*
 void MemberProfile::displayParticulars(string tempUser)
 {
-    int index;
-    index = User.accessData(tempUser);
-}*/
+    int location = index(tempUser);
+    
+    cout << endl;
+    cout << "------------------------------------------------------" << endl;
+    cout << "Showing profile..." << endl;
+    cout << "------------------------------------------------------" << endl;
+   
+    cout << setw(25) << left << "Username: " << memProfile[location].username << endl;
+    
+    cout << setw(25) << left << "Name: " << memProfile[location].name << endl;
+    cout << setw(25) << left << "Nric: " << memProfile[location].nric << endl;
+    cout << setw(25) << left << "Date of birth: " << memProfile[location].dob.day 
+                             << "/" << memProfile[location].dob.month 
+                             << "/" << memProfile[location].dob.year << endl;
+    cout << setw(25) << left << "Address: " << memProfile[location].address << endl;
+    cout << setw(25) << left << "Booking preference: " << memProfile[location].bookingPreference << endl;
+    cout << setw(25) << left << "Want notification?: " <<  memProfile[location].notification << endl;
+    cout << endl;
+}
