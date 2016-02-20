@@ -204,7 +204,7 @@ void facilitiesManagement()
         cin >> options;
         cin.clear();
         cin.ignore(300,'\n');
-        string name, description;
+        string name, description, new_name;
         int check;
         switch (options)
         {
@@ -228,7 +228,18 @@ void facilitiesManagement()
                         pressEnter();
                     }
                    break;
-            case 3: cout << "update" << endl;
+            case 3: cout << "Facility Name: ";
+                    getline (cin, name);
+                    cout << "New Facility name: ";
+                    getline (cin, new_name);
+                    cout << "new Facility Description: ";
+                    getline (cin, description);
+                    check = facManage.editFacility(name, new_name, description);
+                    if (check == -1)
+                    {
+                        cout << "The keyed in Facility does not exist!" << endl;
+                        pressEnter();
+                    }
                    break;
             case 4: cout << "view" << endl;
                    break;     

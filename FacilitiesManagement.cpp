@@ -97,7 +97,38 @@ int FacilitiesManagement::removeFacility(string fac_name)
                         << facilities[i].description 
                         << endl;
             }
-        }     
+            outfile.close();
+        }
+        return 0;
+    }
+    else
+        return -1;
+}
+int FacilitiesManagement::editFacility(string fac_name, string new_name, string fac_desc)
+{
+    int check = checkExists (fac_name);
+    
+    if (check == 1)
+    {
+        fstream outfile;
+        outfile.open("facilitiesDB.txt",ios::out | ios::trunc);
+        int i;
+        for (i=0; i < size; i++)
+        {
+            if (facilities[i].name == fac_name)
+            {
+                facilities[i].name = new_name;
+                facilities[i].description = fac_desc;
+                for (int j=0; j < size; j++)
+                {
+                    outfile << facilities[j].name << "," 
+                            << facilities[j].description 
+                            << endl;
+                }
+                outfile.close();
+                return 0;
+            }
+        }
     }
     else
         return -1;
