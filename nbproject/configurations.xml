@@ -5,7 +5,11 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>Authentication.h</itemPath>
+      <itemPath>Facilities.h</itemPath>
+      <itemPath>FacilitiesManagement.h</itemPath>
       <itemPath>MemberManagement.h</itemPath>
+      <itemPath>MemberProfile.h</itemPath>
+      <itemPath>User.h</itemPath>
       <itemPath>main.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -16,7 +20,11 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>Authentication.cpp</itemPath>
+      <itemPath>Facilities.cpp</itemPath>
+      <itemPath>FacilitiesManagement.cpp</itemPath>
       <itemPath>MemberManagement.cpp</itemPath>
+      <itemPath>MemberProfile.cpp</itemPath>
+      <itemPath>User.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -31,6 +39,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
@@ -45,9 +56,25 @@
       </item>
       <item path="Authentication.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Facilities.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Facilities.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FacilitiesManagement.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FacilitiesManagement.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="MemberManagement.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="MemberManagement.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MemberProfile.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MemberProfile.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="User.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="User.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -78,9 +105,25 @@
       </item>
       <item path="Authentication.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Facilities.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Facilities.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FacilitiesManagement.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FacilitiesManagement.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="MemberManagement.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="MemberManagement.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MemberProfile.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MemberProfile.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="User.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="User.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -46,36 +46,17 @@ void Authentication::setPassword(string password)
     password = password;
 }
 
-int Authentication::verify(string username, string password)
+int Authentication::verify(string username, string password, User u)
 {
-    fstream afile;
-    afile.open("userDB.txt",ios::in);
-    UserDB access[MAX];     
+    int size = u.storeData();
     
-    if (!afile)
-    {
-        cout << "userDB.txt opened for reading failed" << endl;
-        return -1;
-    }
-    
-    int size=0;
-    char rubbish;
-    while (afile >> access[size].role)
-    {
-        afile.get(rubbish);
-        getline(afile,access[size].user,',');
-        getline(afile,access[size].pass);
-        size++;
-    }
-
-    afile.close();
     for (int i=0; i < size; i++)
     {
-        if (access[i].user == username)
+        if (u.access[i].user == username)
         {
-            if (access[i].pass == password)
+            if (u.access[i].pass == password)
             {
-                return access[i].role;
+                return u.access[i].role;
             }
             else
             {

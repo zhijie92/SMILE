@@ -15,13 +15,14 @@
 #include "MemberManagement.h"
 #include "Facilities.h"
 #include "FacilitiesManagement.h" 
-
+#include "User.h"
 Authentication authenticate;
 MemberManagement memManage;
 FacilitiesManagement facManage;
-
+User u;
 int main()
 {
+    facManage.fileToArray();
     mainMenu();
 }
 
@@ -48,6 +49,7 @@ int mainMenu()
     int counter = 0;
     int options;
     bool flag = true;
+    
     do
     {
         if (flag == false && options == -1)
@@ -78,7 +80,8 @@ int mainMenu()
             cin >> password;
         }while (password.empty());
         cout << endl;
-        options = authenticate.verify(username, password);
+        
+        options = authenticate.verify(username, password, u);
         flag = false;
     //go through authentication class for user and password and return 
     }while ((options == -1 || options == -2)  && counter++ < 2);
@@ -209,13 +212,21 @@ void facilitiesManagement()
                     getline (cin, name);
                     cout << "Facility Description: ";
                     getline (cin, description);
-                    check = facManage.addRecord(name, description);
-                    if (check != 0)
+                    check = facManage.addFacility(name, description);
+                    if (check == -1)
                     {
                         cout << "The keyed in Facility already exist!" << endl;
+                        pressEnter();
                     }
                    break;
-            case 2: cout << "delete" << endl;
+            case 2: cout << "Facility Name: ";
+                    getline (cin, name);
+                    check = facManage.removeFacility(name);
+                    if (check == -1)
+                    {
+                        cout << "The keyed in Facility does not exist!" << endl;
+                        pressEnter();
+                    }
                    break;
             case 3: cout << "update" << endl;
                    break;
@@ -272,7 +283,7 @@ void memberManagement()
                         }while (newUser.empty());
                         
                         // check for existing username
-                        isExist = authenticate.verify(newUser, newPassword);
+                        isExist = authenticate.verify(newUser, newPassword, u);
                     } while (isExist == -2);
                    
                     do

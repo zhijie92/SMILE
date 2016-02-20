@@ -27,28 +27,18 @@ public:
     FacilitiesManagement(const FacilitiesManagement& orig);
     virtual ~FacilitiesManagement();
     
+    void fileToArray ();
     int checkExists (string str);
-    int addRecord(string fac_name, string fac_desc);
-    void updateFacilityID(string id);
-    void printAllAvailableRecords();
-    void printSummaryRecords();
-    void removeRecord(string tId);
-    void printAllRecords();
-    void editRecord(string facId,string fac_name, string fac_desc);
+    int addFacility(string fac_name, string fac_desc);
+    int removeFacility(string fac_name);
     void editFacility();
-    void removeFacility();
-    void addFacility();
-    double roundOff(double s);
-    bool tryParseInt(string testValue);
-    void PopulateAvailableDateAndTime(string facId);
-    string retrieveCurrentDate();
-    bool FacilityIDExists(string id);
+    void printAllFacilities();
 private:
     struct FacilitiesDB 
     {
         string name;
         string description;
-    };
+    }facilities[100];
 };
 
 #endif /* FACILITIESMANAGEMENT_H */
