@@ -44,7 +44,12 @@ void Booking::fileToArray ()
             for (int j = 0; j < 31; j++)
             {
                 afile >> bookingdates[s].dates[i][j];
-                afile >> rubbish;
+                afile.get (rubbish);
+                for (int k = 0; k < 10; k++)
+                {
+                    afile >> bookingdates[s].facility.timeslot[i][j][k];
+                    afile.get(rubbish);
+                }
             }
         }
         s++;
@@ -67,7 +72,7 @@ int Booking::checkExists (string fac_name)
 void Booking::populate (string fac_name)
 {
     fstream outfile;
-    outfile.open("BookingDatesDB.txt",ios::out);
+    outfile.open("BookingDatesDB.txt",ios::out | ios::app);
     
     outfile << fac_name << ",";
     for (int i = 0; i < 12; i++)
@@ -75,6 +80,10 @@ void Booking::populate (string fac_name)
         for (int j = 0; j < 31; j++)
         {
             outfile << "0" << "-";
+            for (int k = 0; k < 10; k++)
+            {
+                outfile << "0" << "|";
+            }
         }           
     }
     outfile << endl;   
@@ -85,19 +94,24 @@ void Booking::populate (string fac_name)
     {
         for (int m = 0; m < 31; m++)
         {
-        bookingdates[s].dates[k][m] = 0;
+            bookingdates[s].dates[k][m] = 0;
+            for (int j = 0; j < 10; j++)
+                {
+                    bookingdates[s].facility.timeslot[k][m][j] = 0;
+                }
         }
     }
     s++;
 }
 
-int Booking::checkAlreadyBooked (string fac_name, int month, int day)
+int Booking::checkAlreadyBooked (string fac_name, int month, int day, int timeslot)
 {
     for (int i=0; i < s; i++)
     {
         if (bookingdates[i].facility.name == fac_name)
         {
-            if (bookingdates[i].dates[month-1][day-1] == 1)
+            if ((bookingdates[i].dates[month-1][day-1] == 1) && 
+                (bookingdates[i].facility.timeslot[month-1][day-1][timeslot-1] == 1))
                 return 1;
             else
                 return 0;
@@ -105,7 +119,7 @@ int Booking::checkAlreadyBooked (string fac_name, int month, int day)
     }
 }
 
-int Booking::newBooking(string fac_name, int month, int day, string username)
+int Booking::newBooking(string fac_name, int month, int day, string username, int timeslot)
 {
     int check = fac.checkExists (fac_name);
     int check2 = checkExists (fac_name);
@@ -117,7 +131,7 @@ int Booking::newBooking(string fac_name, int month, int day, string username)
     {
         populate (fac_name);
     }
-    int check3 = checkAlreadyBooked (fac_name, month, day);
+    int check3 = checkAlreadyBooked (fac_name, month, day, timeslot);
     if (check3 == 1)
         return -1;
     int location = mp.index(username);
@@ -131,12 +145,15 @@ int Booking::newBooking(string fac_name, int month, int day, string username)
             if (bookingdates[i].facility.name == fac_name)
             {
                 bookingdates[i].dates[month-1][day-1] = 1;
+                bookingdates[i].facility.timeslot[month-1][day-1][timeslot-1] = 1;
                 int index1 = mp.getLastIndexBookedFacilites(username);
                 int index2 = mp.getLastIndexDate(username);
+                int index3 = mp.getLastIndexTimeslot (username);
                 
                 mp.memProfile[location].bookedFacility[index1+1].name = fac_name;
                 mp.memProfile[location].bookedFacility[index1+1].description = bookingdates[i].facility.description;
                 mp.memProfile[location].bookedFacility[index1+1].rates = bookingdates[i].facility.rates;
+                mp.memProfile[location].bookedFacility[index1+1].timeslot[0][0][index3+1] = 1;
                 mp.memProfile[location].bookedDates[index2+1].day = day;
                 mp.memProfile[location].bookedDates[index2+1].month = month;
                 
@@ -148,10 +165,15 @@ int Booking::newBooking(string fac_name, int month, int day, string username)
                          for (int m = 0; m < 31; m++)
                          {
                              outfile << bookingdates[j].dates[k][m] << "-";
+                             for (int p = 0; p < 10; p++)
+                            {
+                                outfile << bookingdates[j].facility.timeslot[k][m][p] << "|";
+                            }
                          }
                      }
                     outfile << endl;
                 }
+                
                 outfile.close();
                 return 0;
             }

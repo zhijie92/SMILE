@@ -1,4 +1,4 @@
-Tennis1,Tennis is a fun sport,20
+Tennis,Tennis is a fun sport,20
 Billard,Billard table,18.5
 Karaoke,Karaoke Room,99.99
 Table Tennis,Table Tennis Room is good,2.22

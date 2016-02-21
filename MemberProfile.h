@@ -21,6 +21,7 @@
 #include <iomanip>
 #include <cstdlib>
 #include "Facilities.h"
+#include "Booking.h"
 
 using namespace std;
 class MemberProfile: public User
@@ -40,6 +41,7 @@ class MemberProfile: public User
         void amendBooking();
         int getLastIndexDate (string);
         int getLastIndexBookedFacilites (string);
+        int getLastIndexTimeslot (string);
 
     protected:
         int totalMember;

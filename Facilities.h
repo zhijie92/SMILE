@@ -31,6 +31,7 @@ public:
 private:
     string name, description;
     int ID;
+    int timeslot[12][31][10];
     double rates;  
 };
 
