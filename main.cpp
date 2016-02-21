@@ -210,6 +210,7 @@ void facilitiesManagement()
         cin.clear();
         cin.ignore(300,'\n');
         string name, description, new_name;
+        double rates;
         int check;
         switch (options)
         {
@@ -217,10 +218,14 @@ void facilitiesManagement()
                     getline (cin, name);
                     cout << "Facility Description: ";
                     getline (cin, description);
-                    check = facManage.addFacility(name, description);
+                    cout << "Facility Rates: $";
+                    cin >> rates;
+                    cin.clear();
+                    cin.ignore(300,'\n');
+                    check = facManage.addFacility(name, description, rates);
                     if (check == -1)
                     {
-                        cout << "The keyed in Facility already exist!" << endl;
+                        cout << name << " already exist!" << endl;
                         pressEnter();
                     }
                    break;
@@ -229,26 +234,80 @@ void facilitiesManagement()
                     check = facManage.removeFacility(name);
                     if (check == -1)
                     {
-                        cout << "The keyed in Facility does not exist!" << endl;
+                        cout << name << " does not exist!" << endl;
+                        pressEnter();
+                    }
+                   break;
+            case 3: updateFacilitiesMenu ();
+                   break;
+            case 4: facManage.printAllFacilities();
+                    pressEnter();
+                   break;     
+            case 9:
+                   break;
+            default: cout << "Please enter a valid option" << endl;
+        }
+    }while (options != 9);
+}
+
+void updateFacilitiesMenu ()
+{
+    int options, check;
+    string name, new_name, description;
+    double rates;
+    
+    do
+    {
+        makePartition();
+        cout << setw(50) << "Country Club Facilities Booking System" << endl;
+        cout << setw(46) << "+++++++  Update Facilities Menu  +++++++" << endl;
+        makePartition();
+        cout << "    1.) Update Facilities Name" << endl;
+        cout << "    2.) Update Facilities Description" << endl;
+        cout << "    3.) Update Facilities Rates" << endl;
+        cout << "    9.) Quit" << endl;
+        
+        cout << "Option :";
+        cin >> options;
+        cin.clear();
+        cin.ignore(300,'\n');
+        switch (options)
+        { 
+            case 1: cout << "Facility Name: ";
+                    getline (cin, name);
+                    cout << "New Facility name: ";
+                    getline (cin, new_name);
+                    check = facManage.editFacility(1, name, new_name, description, rates);
+                    if (check == -1)
+                    {
+                        cout << name << " does not exist!" << endl;
+                        pressEnter();
+                    }
+                   break;
+            case 2: cout << "Facility Name: ";
+                    getline (cin, name);
+                    cout << "new Facility Description: ";
+                    getline (cin, description);
+                    check = facManage.editFacility(2, name, new_name, description, rates);
+                    if (check == -1)
+                    {
+                        cout << name << " does not exist!" << endl;
                         pressEnter();
                     }
                    break;
             case 3: cout << "Facility Name: ";
                     getline (cin, name);
-                    cout << "New Facility name: ";
-                    getline (cin, new_name);
-                    cout << "new Facility Description: ";
-                    getline (cin, description);
-                    check = facManage.editFacility(name, new_name, description);
+                    cout << "new Facility rates: $";
+                    cin >> rates;
+                    cin.clear();
+                    cin.ignore(300,'\n');
+                    check = facManage.editFacility(3, name, new_name, description, rates);
                     if (check == -1)
                     {
-                        cout << "The keyed in Facility does not exist!" << endl;
+                        cout << name << " does not exist!" << endl;
                         pressEnter();
                     }
                    break;
-            case 4: facManage.printAllFacilities();
-                    pressEnter();
-                   break;     
             case 9:
                    break;
             default: cout << "Please enter a valid option" << endl;
@@ -359,7 +418,6 @@ void bookingMenu()
         cout << "    1.) Make Booking" << endl;
         cout << "    2.) View Booking" << endl;
         cout << "    3.) Cancel Booking" << endl;
-        cout << "    4.) Booking Preferences" << endl;
         cout << "    9.) Quit" << endl;
         
         cout << "Option :";
@@ -384,15 +442,13 @@ void bookingMenu()
                     }
                     else if (check == -2)
                     {
-                        cout << "The keyed in Facility does not exist!" << endl;
+                        cout << name << " does not exist!" << endl;
                         pressEnter();
                     }    
                    break;
             case 2: cout << "test2" << endl;
                    break;
             case 3: cout << "test3" << endl;
-                   break;
-            case 4: cout << "test4" << endl;
                    break;
             case 9:
                    break;

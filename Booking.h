@@ -18,6 +18,7 @@
 #include <cstdlib>
 #include <string>
 #include "FacilitiesManagement.h"
+#include "MemberProfile.h"
 
 class Booking {
 public:
@@ -33,7 +34,7 @@ public:
 private:
     struct BookingDatesDB
     {
-        string facilityName;
+        Facilities facility;
         int dates[12][31];
     }bookingdates[100];
 };

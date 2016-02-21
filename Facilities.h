@@ -21,22 +21,16 @@ using namespace std;
 
 class Facilities {
 public:
+    friend class FacilitiesManagement;
+    friend class Booking;
     Facilities();
     Facilities(const Facilities& orig);
     virtual ~Facilities();
     
-    int GetFacilityID() const;
-    void SetFacilityID(const int id);
-    string GetFacilityName() const;
-    void SetFacilityName(const string name);
-    string GetFacilityDescription() const;
-    void SetFacilityDescription(const string desc);
 private:
-    string facilityName, facilityDescription;
-    int facilityID;
-    double facilityRate;
-    
-    
+    string name, description;
+    int ID;
+    double rates;  
 };
 
 #endif /* FACILITIES_H */

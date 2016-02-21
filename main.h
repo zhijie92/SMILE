@@ -29,6 +29,7 @@ void bookingMenu();
 
 // manager menu
 void facilitiesManagement();
+void updateFacilitiesMenu ();
 void memberManagement();
 
 // member menu

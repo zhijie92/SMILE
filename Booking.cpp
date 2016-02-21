@@ -36,7 +36,7 @@ void Booking::fileToArray ()
     fstream afile;
     afile.open ("BookingDatesDB.txt", ios::in);
     
-    while (getline(afile, bookingdates[s].facilityName, ','))
+    while (getline(afile, bookingdates[s].facility.name, ','))
     {
         for (int i = 0; i < 12; i++)
         {
@@ -55,7 +55,7 @@ int Booking::checkExists (string fac_name)
 {
     for (int i=0; i < s; i++)
     {
-        if (bookingdates[i].facilityName == fac_name)
+        if (bookingdates[i].facility.name == fac_name)
         {
             return 1;
         }
@@ -79,7 +79,7 @@ void Booking::populate (string fac_name)
     outfile << endl;   
     outfile.close();
   
-    bookingdates[s].facilityName = fac_name; 
+    bookingdates[s].facility.name = fac_name; 
     for (int k = 0; k < 12; k++)
     {
         for (int m = 0; m < 31; m++)
@@ -94,7 +94,7 @@ int Booking::checkAlreadyBooked (string fac_name, int month, int day)
 {
     for (int i=0; i < s; i++)
     {
-        if (bookingdates[i].facilityName == fac_name)
+        if (bookingdates[i].facility.name == fac_name)
         {
             if (bookingdates[i].dates[month-1][day-1] == 1)
                 return 1;
@@ -126,12 +126,12 @@ int Booking::newBooking(string fac_name, int month, int day)
 
         for (int i=0; i < s; i++)
         {
-            if (bookingdates[i].facilityName == fac_name)
+            if (bookingdates[i].facility.name == fac_name)
             {
                 bookingdates[i].dates[month-1][day-1] = 1;
                 for (int j=0; j < s; j++)
                 {
-                    outfile << bookingdates[j].facilityName << ","; 
+                    outfile << bookingdates[j].facility.name << ","; 
                      for (int k = 0; k < 12; k++)
                      {
                          for (int m = 0; m < 31; m++)
