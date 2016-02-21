@@ -14,6 +14,7 @@
 #include "Booking.h"
 
 FacilitiesManagement fac;
+MemberProfile mp;
 int s = 0;
 
 Booking::Booking()
@@ -104,7 +105,7 @@ int Booking::checkAlreadyBooked (string fac_name, int month, int day)
     }
 }
 
-int Booking::newBooking(string fac_name, int month, int day)
+int Booking::newBooking(string fac_name, int month, int day, string username)
 {
     int check = fac.checkExists (fac_name);
     int check2 = checkExists (fac_name);
@@ -119,6 +120,7 @@ int Booking::newBooking(string fac_name, int month, int day)
     int check3 = checkAlreadyBooked (fac_name, month, day);
     if (check3 == 1)
         return -1;
+    int location = mp.index(username);
     if (check == 1 && check3 == 0)
     {
         fstream outfile;
@@ -129,6 +131,15 @@ int Booking::newBooking(string fac_name, int month, int day)
             if (bookingdates[i].facility.name == fac_name)
             {
                 bookingdates[i].dates[month-1][day-1] = 1;
+                int index1 = mp.getLastIndexBookedFacilites(username);
+                int index2 = mp.getLastIndexDate(username);
+                
+                mp.memProfile[location].bookedFacility[index1+1].name = fac_name;
+                mp.memProfile[location].bookedFacility[index1+1].description = bookingdates[i].facility.description;
+                mp.memProfile[location].bookedFacility[index1+1].rates = bookingdates[i].facility.rates;
+                mp.memProfile[location].bookedDates[index2+1].day = day;
+                mp.memProfile[location].bookedDates[index2+1].month = month;
+                
                 for (int j=0; j < s; j++)
                 {
                     outfile << bookingdates[j].facility.name << ","; 

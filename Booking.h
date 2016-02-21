@@ -30,7 +30,7 @@ public:
     int checkExists (string str);
     void populate (string fac_name);
     int checkAlreadyBooked (string fac_name, int month, int day);
-    int newBooking(string fac_name, int month, int day);
+    int newBooking(string fac_name, int month, int day, string username);
 private:
     struct BookingDatesDB
     {

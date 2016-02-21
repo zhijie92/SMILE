@@ -176,7 +176,7 @@ void memberMenu(string username)
                    break;
             case 4: cout << "test4" << endl;
                    break;
-            case 5: bookingMenu();
+            case 5: bookingMenu(username);
                    break;   
             case 6: cout << "test4" << endl;
                    break; 
@@ -405,7 +405,7 @@ void viewProfile(string username)
     pressEnter();
 }
 
-void bookingMenu()
+void bookingMenu(string username)
 {   
     string name;
     int options, month, day, check;
@@ -434,7 +434,7 @@ void bookingMenu()
                     cin >> month;
                     cin.clear();
                     cin.ignore(100, '\n');
-                    check = booking.newBooking(name, month, day);
+                    check = booking.newBooking(name, month, day, username);
                     if (check == -1)
                     {
                         cout << name << " on " << day << "/" << month << " has already been booked!" << endl;

@@ -109,3 +109,26 @@ void MemberProfile::displayParticulars(string tempUser)
     cout << setw(25) << left << "Want notification?: " <<  memProfile[location].notification << endl;
     cout << endl;
 }
+
+int MemberProfile::getLastIndexDate (string tempUser)
+{
+    int location = index(tempUser);
+    
+    int i = 0;
+    while (memProfile[location].bookedDates[i].month != 0)
+    {
+        i++;
+    }
+    return i-1;
+}
+int MemberProfile::getLastIndexBookedFacilites (string tempUser)
+{
+    int location = index(tempUser);
+    
+    int i = 0;
+    while (memProfile[location].bookedFacility[i].name != "")
+    {
+        i++;
+    }
+    return i-1;
+}
