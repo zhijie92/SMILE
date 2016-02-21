@@ -23,6 +23,7 @@ class Facilities {
 public:
     friend class FacilitiesManagement;
     friend class Booking;
+    friend class MemberProfile;
     Facilities();
     Facilities(const Facilities& orig);
     virtual ~Facilities();

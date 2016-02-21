@@ -20,6 +20,7 @@
 #include <fstream>
 #include <iomanip>
 #include <cstdlib>
+#include "Facilities.h"
 
 using namespace std;
 
@@ -59,6 +60,7 @@ class MemberProfile: public User
             string address;
             string bookingPreference;
             bool notification;
+            Facilities bookedFacility[10];
         }memProfile[MAX];
 };
 
