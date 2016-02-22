@@ -36,10 +36,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Authentication.o \
+	${OBJECTDIR}/Booking.o \
 	${OBJECTDIR}/Facilities.o \
 	${OBJECTDIR}/FacilitiesManagement.o \
 	${OBJECTDIR}/MemberManagement.o \
 	${OBJECTDIR}/MemberProfile.o \
+	${OBJECTDIR}/MembershipRanking.o \
 	${OBJECTDIR}/User.o \
 	${OBJECTDIR}/main.o
 
@@ -73,6 +75,11 @@ ${OBJECTDIR}/Authentication.o: Authentication.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Authentication.o Authentication.cpp
 
+${OBJECTDIR}/Booking.o: Booking.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Booking.o Booking.cpp
+
 ${OBJECTDIR}/Facilities.o: Facilities.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -92,6 +99,11 @@ ${OBJECTDIR}/MemberProfile.o: MemberProfile.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MemberProfile.o MemberProfile.cpp
+
+${OBJECTDIR}/MembershipRanking.o: MembershipRanking.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MembershipRanking.o MembershipRanking.cpp
 
 ${OBJECTDIR}/User.o: User.cpp 
 	${MKDIR} -p ${OBJECTDIR}

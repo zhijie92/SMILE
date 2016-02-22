@@ -20,12 +20,14 @@
 #include <fstream>
 #include <iomanip>
 #include <cstdlib>
+#include "Facilities.h"
+#include "Booking.h"
 
 using namespace std;
-
 class MemberProfile: public User
 {   
     public:
+        friend class Booking;
         MemberProfile();
         MemberProfile(const MemberProfile& orig);
         virtual ~MemberProfile();    
@@ -50,6 +52,9 @@ class MemberProfile: public User
         void upgradeRanking();
         void accessSearchPortal();
         void amendBooking();
+        int getLastIndexDate (string);
+        int getLastIndexBookedFacilites (string);
+        int getLastIndexTimeslot (string);
 
     protected:
         int totalMember;
@@ -72,6 +77,8 @@ class MemberProfile: public User
             string address;
             string bookingPreference;
             bool notification;
+            Facilities bookedFacility[10];
+            Date bookedDates[10];
         } memProfile[MAX];
 };
 

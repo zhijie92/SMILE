@@ -517,3 +517,45 @@ void MemberProfile::wantNotification(int location)
     cout << "Press enter to continue..." << endl;
     cin.ignore(300,'\n');
 }
+
+int MemberProfile::getLastIndexDate (string tempUser)
+{
+    int location = index(tempUser);
+    
+    int i = 0;
+    while (memProfile[location].bookedDates[i].month != 0)
+    {
+        i++;
+    }
+    return i-1;
+}
+
+int MemberProfile::getLastIndexBookedFacilites (string tempUser)
+{
+    int location = index(tempUser);
+    
+    int i = 0;
+    while (memProfile[location].bookedFacility[i].name != "")
+    {
+        i++;
+    }
+    return i-1;
+}
+
+int MemberProfile::getLastIndexTimeslot (string tempUser)
+{
+    int location = index(tempUser);
+    
+    int i = 0;
+    bool check;
+    while (check)
+    {
+        for (int j = 0; j < 10; j++)
+        {
+            if(memProfile[location].bookedFacility[i].timeslot[j] != 0)
+                check = false;
+        }
+        i++;
+    }
+    return i-1;
+}

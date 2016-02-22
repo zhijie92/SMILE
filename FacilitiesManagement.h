@@ -20,7 +20,6 @@
 #include "Facilities.h"
 
 using namespace std;
-
 class FacilitiesManagement {
 public:
     FacilitiesManagement();
@@ -29,15 +28,14 @@ public:
     
     void fileToArray ();
     int checkExists (string str);
-    int addFacility(string fac_name, string fac_desc);
+    int addFacility(string fac_name, string fac_desc, double rates);
     int removeFacility(string fac_name);
-    int editFacility(string fac_name, string new_name, string fac_desc);
+    int editFacility(int opt, string fac_name, string new_name, string fac_desc, double rates);
     void printAllFacilities();
 private:
     struct FacilitiesDB 
     {
-        string name;
-        string description;
+         Facilities facility;
     }facilities[100];
 };
 

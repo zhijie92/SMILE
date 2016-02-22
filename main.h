@@ -25,9 +25,11 @@ void pressEnter();
 int mainMenu();
 void clubManagerMenu(string);
 void memberMenu(string);
+void bookingMenu(string);
 
 // manager menu
 void facilitiesManagement();
+void updateFacilitiesMenu ();
 void memberManagement(string);
 
 // member menu
