@@ -8,6 +8,7 @@
       <itemPath>Booking.h</itemPath>
       <itemPath>Facilities.h</itemPath>
       <itemPath>FacilitiesManagement.h</itemPath>
+      <itemPath>Help.h</itemPath>
       <itemPath>MemberManagement.h</itemPath>
       <itemPath>MemberProfile.h</itemPath>
       <itemPath>MembershipRanking.h</itemPath>
@@ -25,6 +26,7 @@
       <itemPath>Booking.cpp</itemPath>
       <itemPath>Facilities.cpp</itemPath>
       <itemPath>FacilitiesManagement.cpp</itemPath>
+      <itemPath>Help.cpp</itemPath>
       <itemPath>MemberManagement.cpp</itemPath>
       <itemPath>MemberProfile.cpp</itemPath>
       <itemPath>MembershipRanking.cpp</itemPath>
@@ -71,6 +73,10 @@
       <item path="FacilitiesManagement.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="FacilitiesManagement.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Help.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Help.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="MemberManagement.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -128,6 +134,10 @@
       <item path="FacilitiesManagement.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="FacilitiesManagement.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Help.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Help.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="MemberManagement.cpp" ex="false" tool="1" flavor2="0">
       </item>

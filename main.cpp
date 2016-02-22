@@ -182,7 +182,7 @@ void memberMenu(string username)
                    break;
             case 5: bookingMenu(username);
                    break;   
-            case 6: cout << "test4" << endl;
+            case 6: helpMenu(username);
                    break; 
             case 9:
                    break;
@@ -523,4 +523,30 @@ void bookingMenu(string username)
             default: cout << "Please enter a valid option" << endl;
         }
     }while (options != 9);
+}
+
+void helpMenu(string username)
+{
+    int options;
+    makePartition();
+    cout << "Welcome to the CCFBS Help System." << endl;
+    cout << "    1) Help with booking" << endl;
+    cout << "    2) Help with searching" << endl;
+    cout << "    3) Help with ranking." << endl;
+    cout << "    4) Back to m " << endl;
+    makePartition();
+    
+    cout << "Option: ";
+    cin >> options;
+    
+    switch (options)
+    {
+        case 1:
+            break;
+    case 2:
+        break;
+    case 3:
+        break;
+        
+    }
 }

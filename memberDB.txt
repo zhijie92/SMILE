@@ -2,7 +2,7 @@ reubenloh
 reuben loh weng hao
 S1234567H
 27-10-1992
-F
+f
 Pineapple under the sea #25-111 S123456
 Tennis
 no
@@ -11,7 +11,17 @@ dingxuan
 darth vadar
 S1231111H
 11-11-1992
-M
+m
 Pineapple in the death star
 Billard
 no
+
+zhijie12
+Not applicable
+Not applicable
+0-0-0
+f
+Not applicable
+Not applicable
+no
+

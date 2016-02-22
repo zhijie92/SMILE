@@ -23,15 +23,17 @@ using namespace std;
 void makePartition();
 void pressEnter();
 int mainMenu();
-void clubManagerMenu(string);
-void memberMenu(string);
-void bookingMenu(string);
 
 // manager menu
+void clubManagerMenu(string);
 void facilitiesManagement();
 void updateFacilitiesMenu ();
 void memberManagement(string);
 
 // member menu
+void memberMenu(string);
+void viewProfile(string);
+void bookingMenu(string);
+void helpMenu(string);
 #endif /* MAIN_H */
 

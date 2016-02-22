@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Booking.o \
 	${OBJECTDIR}/Facilities.o \
 	${OBJECTDIR}/FacilitiesManagement.o \
+	${OBJECTDIR}/Help.o \
 	${OBJECTDIR}/MemberManagement.o \
 	${OBJECTDIR}/MemberProfile.o \
 	${OBJECTDIR}/MembershipRanking.o \
@@ -89,6 +90,11 @@ ${OBJECTDIR}/FacilitiesManagement.o: FacilitiesManagement.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FacilitiesManagement.o FacilitiesManagement.cpp
+
+${OBJECTDIR}/Help.o: Help.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Help.o Help.cpp
 
 ${OBJECTDIR}/MemberManagement.o: MemberManagement.cpp 
 	${MKDIR} -p ${OBJECTDIR}

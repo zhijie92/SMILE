@@ -82,6 +82,7 @@ void MemberManagement::addUser(string username, string password, int role)
         memProfile[totalMember].address = "Not applicable";
         memProfile[totalMember].bookingPreference = "Not applicable";
         memProfile[totalMember].notification = 0;
+
         totalMember+=1;
         
         updateMemberDB();
