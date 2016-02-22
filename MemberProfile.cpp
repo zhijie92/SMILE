@@ -650,6 +650,7 @@ void MemberProfile::upgradeRanking(string tempUser)
              {
                  cout << "You already have the highest";
              }
+            cout << endl;
       }
       updateMemberDB();
     cout << "Press enter to continue..." << endl;
