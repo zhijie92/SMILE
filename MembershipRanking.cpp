@@ -43,6 +43,7 @@ MembershipRanking::MembershipRanking(Ranking rank)
         this->rank = platinum;
         this->freeGift="You will receive free gift every year";
     }
+    cout << endl;
 }
 void MembershipRanking::viewRankingInfo() {
     cout << this->rankingInfo;
