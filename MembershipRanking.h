@@ -17,8 +17,8 @@ public:
     MembershipRanking(Ranking);
     MembershipRanking(const MembershipRanking& orig);
     virtual ~MembershipRanking();
-void viewRankingInfo();
-    void ammendRanking();
+    void viewRankingInfo();
+  
 protected: 
     string rankingInfo;
     float membershipFees;
