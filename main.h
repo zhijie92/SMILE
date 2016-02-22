@@ -35,5 +35,6 @@ void memberMenu(string);
 void viewProfile(string);
 void bookingMenu(string);
 void helpMenu(string);
+void memberProfRankHelp(string);
 #endif /* MAIN_H */
 

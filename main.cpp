@@ -153,7 +153,7 @@ void memberMenu(string username)
     do
     {
         memProf.memberToArray();
-        memProf.storeIndex(username);
+        //memProf.storeIndex(username);
         makePartition();
         cout << setw(50) << "Country Club Facilities Booking System" << endl;
         cout << setw(46) << "+++++++  Member's Menu  +++++++" << endl;
@@ -322,6 +322,7 @@ void updateFacilitiesMenu ()
 
 void memberManagement(string username)
 {
+    memProf.storeIndex(username);
     int options;
     string newUser="123456";
     string newPassword;
@@ -528,26 +529,40 @@ void bookingMenu(string username)
 
 void helpMenu(string username)
 {
+   
     int options;
-    makePartition();
-    cout << "Welcome to the CCFBS Help System." << endl;
-    cout << "    1) Help with booking" << endl;
-    cout << "    2) Help with searching" << endl;
-    cout << "    3) Help with ranking." << endl;
-    cout << "    4) Back to m " << endl;
-    makePartition();
-    
-    cout << "Option: ";
-    cin >> options;
-    
-    switch (options)
+    do
     {
-        case 1:
-            break;
-    case 2:
-        break;
-    case 3:
-        break;
-        
-    }
+        makePartition();
+        cout << "Welcome to the CCFBS Help System." << endl;
+        cout << "    1) Need help regarding member profile/membership ranking" << endl;
+        cout << "    2) Need help regarding booking of facility" << endl;
+        cout << "    9) Back to main menu" << endl;
+        makePartition();
+
+        cout << "Option: ";
+        cin >> options;
+
+        switch (options)
+        {
+            case 1: memberProfRankHelp(username);
+                   break;
+             case 2:
+                    break;
+             case 9:
+                    break;
+            default: cout << "Please enter a valid option. " << endl;
+        }
+    }while (options != 9);
+}
+
+void memberProfRankHelp(string username)
+{
+    cout << "--------------------------------------------" << endl;
+    cout << "Member profile/ membership ranking Help page" << endl;
+    cout << "--------------------------------------------" << endl;
+    cout << "  a) Display membership rankings. " << endl;
+    cout << "  b) How to upgrade my membership? " << endl;
+    cout << "  c) How to view my profile? " << endl;
+    cout << "  d) How to change my profile particulars? " << endl;
 }

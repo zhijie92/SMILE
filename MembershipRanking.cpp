@@ -46,7 +46,7 @@ MembershipRanking::MembershipRanking(Ranking rank)
 }
 void MembershipRanking::viewRankingInfo() {
     cout << this->rankingInfo;
-  
+    cout << endl;
     cout << "Membership fees: " << this->membershipFees << endl;
     cout << "Discount rates: " << this->discountRates << endl;
     cout << "Free Gift: " << this->freeGift << endl;
