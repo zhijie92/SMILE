@@ -22,6 +22,7 @@
 #include <cstdlib>
 #include "Facilities.h"
 #include "Booking.h"
+#include "MembershipRanking.h"
 
 using namespace std;
 class MemberProfile: public User
@@ -76,6 +77,7 @@ class MemberProfile: public User
             char gender; // m or f
             string address;
             string bookingPreference;
+            Ranking rank;
             bool notification;
             Facilities bookedFacility[10];
             //Date bookedDates[10];
