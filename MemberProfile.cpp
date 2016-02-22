@@ -61,6 +61,25 @@ void MemberProfile::memberToArray()
         afile.get(rubbish);
         getline(afile,memProfile[tempSize].address);
         getline(afile,memProfile[tempSize].bookingPreference);
+        afile >> rankTemp;
+        if (rankTemp == 0)
+        {
+            memProfile[tempSize].rank = bronze;
+        }
+        else if (rankTemp == 1)
+        {
+            memProfile[tempSize].rank = sliver;
+        }
+        else if (rankTemp == 2)
+        {
+            memProfile[tempSize].rank = gold;
+        }
+        else if (rankTemp == 3)
+        {
+            memProfile[tempSize].rank = platinum;
+        }
+       
+        afile.get(rubbish);
         afile >> memProfile[tempSize].notification; 
         for (int i = 0; i <= noOfBooking; i++)
         {
@@ -155,6 +174,24 @@ void MemberProfile::displayParticulars(string tempUser)
     }
     cout << setw(25) << left << "Address: " << memProfile[location].address << endl;
     cout << setw(25) << left << "Booking preference: " << memProfile[location].bookingPreference << endl;
+    if (memProfile[location].rank == 0)
+    {
+      cout << setw(25) << left << "Membership ranking: " << "Bronze";
+    }
+    //sliver
+    else if (memProfile[location].rank == 1)
+    {
+       cout << setw(25) << left << "Membership ranking: " << "Sliver";
+    }
+    else if (memProfile[location].rank == 2)
+    {   
+       cout << setw(25) << left << "Membership ranking: " << "Gold";
+    }
+    else if (memProfile[location].rank == 3)
+    {
+       cout << setw(25) << left << "Membership ranking: " << "Platinum";
+    }
+    cout << endl;
     if (memProfile[location].notification == 0)
     {
         cout << setw(25) << left << "Want notification?: " <<  "No" << endl;
@@ -164,6 +201,7 @@ void MemberProfile::displayParticulars(string tempUser)
         cout << setw(25) << left << "Want notification?: " <<  "Yes" << endl;
     }
     cout << endl;
+    
 }
 
 void MemberProfile::updateParticularsMenu(string& tempUser)
@@ -211,7 +249,8 @@ void MemberProfile::updateParticularsMenu(string& tempUser)
             case 8: cout << "To be updated" << endl;;
                     break;    
             case 9: wantNotification(location);
-                    break;    
+                    break;
+                    
             default: cout << "Please enter a valid option" << endl;                                                                  
         }
     } while (options != 10);
@@ -240,6 +279,7 @@ void MemberProfile::updateMemberDB()
         afile << memProfile[i].gender << endl;
         afile << memProfile[i].address << endl;
         afile << memProfile[i].bookingPreference << endl;
+        afile << memProfile[i].rank << endl;
         if (memProfile[i].notification == 0)
         {
             afile << "no" << endl;
@@ -554,7 +594,7 @@ void MemberProfile::wantNotification(int location)
     cout << "Press enter to continue..." << endl;
     cin.ignore(300,'\n');
 }
-/*
+
 int MemberProfile::getLastIndexDate (string tempUser)
 {
     int location = index(tempUser);
@@ -566,7 +606,7 @@ int MemberProfile::getLastIndexDate (string tempUser)
     }
     return i-1;
 }
-*/
+
 int MemberProfile::getLastIndexBookedFacilites (string tempUser)
 {
     int location = index(tempUser);
@@ -578,7 +618,7 @@ int MemberProfile::getLastIndexBookedFacilites (string tempUser)
     }
     return i-1;
 }
-/*
+
 int MemberProfile::getLastIndexTimeslot (string tempUser)
 {
     int location = index(tempUser);
@@ -596,4 +636,39 @@ int MemberProfile::getLastIndexTimeslot (string tempUser)
     }
     return i-1;
 }
-*/
+
+void MemberProfile::upgradeRanking(string tempUser)
+{
+      int location = index(tempUser);
+      char mtemp;
+      MembershipRanking memRank (memProfile[location].rank);
+      memRank.viewRankingInfo();
+      cout << endl << "Do you want to upgrade your membership? (Y/N)";
+      cin >> mtemp;
+      cin.clear();
+      if(mtemp == 'Y' || mtemp == 'y')
+      {
+            if (memProfile[location].rank == 0)
+             {
+                cout << "Your membership is now upgraded to silver";
+                memProfile[location].rank = sliver;
+             }
+               else if (memProfile[location].rank == 1)
+             {
+                cout << "Your membership is now upgraded to gold";
+                memProfile[location].rank = gold;
+             }
+                else if (memProfile[location].rank == 2)
+             {   
+                cout << "Your membership is now upgraded to platinum";
+                memProfile[location].rank = platinum;
+             }
+                else if (memProfile[location].rank == 3)
+             {
+                 cout << "You already have the highest";
+             }
+      }
+      updateMemberDB();
+    cout << "Press enter to continue..." << endl;
+    cin.ignore(300,'\n');
+}
