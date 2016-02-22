@@ -571,11 +571,12 @@ void helpMenu(string username)
 
         switch (options)
         {
-            case 1: memberProfRankHelp(username);
+            case 1: cout << "You can upgrade member profile/membership ranking by going to the upgrade ranking menu \n
+                             or contact us by email (country_club@countryclub.sg)" << endl;
                    break;
-             case 2:
+             case 2: cout << "Email us regarding booking of facility. (Email: country_club@countryclub.sg)" << endl;
                     break;
-             case 9:
+             case 9: 
                     break;
             default: cout << "Please enter a valid option. " << endl;
         }
