@@ -81,6 +81,7 @@ void MemberManagement::addUser(string username, string password, int role)
         memProfile[totalMember].gender = '-';
         memProfile[totalMember].address = "Not applicable";
         memProfile[totalMember].bookingPreference = "Not applicable";
+        memProfile[totalMember].notification =  bronze;
         memProfile[totalMember].notification = 0;
         for (int a = 0; a < 10; a++)
         {
@@ -156,6 +157,7 @@ void MemberManagement::removeUser(string username)
             memProfile[i].gender = memProfile[i+1].gender;
             memProfile[i].address = memProfile[i+1].address;
             memProfile[i].bookingPreference = memProfile[i+1].bookingPreference;
+            memProfile[i].rank =  memProfile[i+1].rank;
             memProfile[i].notification =  memProfile[i+1].notification;
             for (int a = 0; a < 10; a++)
             {

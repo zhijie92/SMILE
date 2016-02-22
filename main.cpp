@@ -176,9 +176,9 @@ void memberMenu(string username)
                     pressEnter();
                     break;
             case 2: memProf.updateParticularsMenu(username);
-                   break;
-            case 3: cout << "test3" << endl;
-                   break;
+                    break;
+            case 3: memProf.upgradeRanking(username);
+                    break;
             case 4: cout << "test4" << endl;
                    break;
             case 5: bookingMenu(username);

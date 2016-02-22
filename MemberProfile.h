@@ -50,7 +50,7 @@ class MemberProfile: public User
         void updateBookingPreference(int);
         void wantNotification(int);
 
-        void upgradeRanking();
+        void upgradeRanking(string);
         void accessSearchPortal();
         void amendBooking();
         //int getLastIndexDate (string);
