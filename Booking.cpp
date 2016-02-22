@@ -149,15 +149,16 @@ int Booking::newBooking(string fac_name, int month, int day, string username, in
                 bookingdates[i].dates[month-1][day-1] = 1;
                 bookingdates[i].facility.timeslot[month-1][day-1][timeslot-1] = 1;
                 int index1 = mp.getLastIndexBookedFacilites(username);
-                int index2 = mp.getLastIndexDate(username);
-                int index3 = mp.getLastIndexTimeslot (username);
+                //int index2 = mp.getLastIndexDate(username);
+                //int index3 = mp.getLastIndexTimeslot (username);
                 
                 mp.memProfile[location].bookedFacility[index1+1].name = fac_name;
                 mp.memProfile[location].bookedFacility[index1+1].description = bookingdates[i].facility.description;
                 mp.memProfile[location].bookedFacility[index1+1].rates = bookingdates[i].facility.rates;
-                mp.memProfile[location].bookedFacility[index1+1].timeslot[0][0][index3+1] = 1;
-                mp.memProfile[location].bookedDates[index2+1].day = day;
-                mp.memProfile[location].bookedDates[index2+1].month = month;
+                //mp.memProfile[location].bookedFacility[index1+1].timeslot[0][0][index3+1] = 1;
+                mp.memProfile[location].bookedFacility[index1+1].timeslot[month-1][day-1][timeslot-1] = 1;
+                //mp.memProfile[location].bookedDates[index2+1].day = day;
+                //mp.memProfile[location].bookedDates[index2+1].month = month;
                 
                 for (int j=0; j < s; j++)
                 {
@@ -178,6 +179,67 @@ int Booking::newBooking(string fac_name, int month, int day, string username, in
                 
                 outfile.close();
                 return 0;
+            }
+        }
+    }
+}
+
+int Booking::viewBooking(string username)
+{
+    int location = mp.index(username);
+    int lastIndex = mp.getLastIndexBookedFacilites(username);
+    int m = 0;
+    int d = 0;
+    int t = 0;
+    for (int i = 0; i < lastIndex; i++)
+    {
+        cout << "Facility Name: " << mp.memProfile[location].bookedFacility[i].name << endl;
+        //mp.memProfile[location].bookedFacility[i].description;
+        //mp.memProfile[location].bookedFacility[i].rates;
+        for (m = 0; m < 12; m++)
+        {
+            for (d = 0; d < 31; d++)
+            {
+                for (t = 0; t < 10; t++)
+                {
+                    if (mp.memProfile[location].bookedFacility[i].timeslot[m][d][t] == 1)
+                    {
+                        switch (t)
+                        {
+                            case 0 : cout << "Date: " << d+1 << "/" << m+1 << endl;
+                                     cout << "Timeslot: 10am to 11am" << endl;
+                            break;
+                            case 1 : cout << "Date: " << d+1 << "/" << m+1 << endl;
+                                     cout << "Timeslot: 11am to 12pm" << endl;
+                            break;
+                            case 2 : cout << "Date: " << d+1 << "/" << m+1 << endl;
+                                     cout << "Timeslot: 12am to 1pm" << endl;
+                            break;
+                            case 3 : cout << "Date: " << d+1 << "/" << m+1 << endl;
+                                     cout << "Timeslot: 1pm to 2pm" << endl;
+                            break;
+                            case 4 : cout << "Date: " << d+1 << "/" << m+1 << endl;
+                                     cout << "Timeslot: 2pm to 3pm" << endl;
+                            break;
+                            case 5 : cout << "Date: " << d+1 << "/" << m+1 << endl;
+                                     cout << "Timeslot: 3pm to 4pm" << endl;
+                            break;
+                            case 6 : cout << "Date: " << d+1 << "/" << m+1 << endl;
+                                     cout << "Timeslot: 4pm to 5pm" << endl;
+                            break;
+                            case 7 : cout << "Date: " << d+1 << "/" << m+1 << endl;
+                                     cout << "Timeslot: 5pm to 6pm" << endl;
+                            break;
+                            case 8 : cout << "Date: " << d+1 << "/" << m+1 << endl;
+                                     cout << "Timeslot: 6pm to 7pm" << endl;
+                            break;
+                            case 9 : cout << "Date: " << d+1 << "/" << m+1 << endl;
+                                     cout << "Timeslot: 7pm to 8pm" << endl;
+                            break;
+                        }
+                    }
+                        
+                }
             }
         }
     }

@@ -517,7 +517,7 @@ void MemberProfile::wantNotification(int location)
     cout << "Press enter to continue..." << endl;
     cin.ignore(300,'\n');
 }
-
+/*
 int MemberProfile::getLastIndexDate (string tempUser)
 {
     int location = index(tempUser);
@@ -529,7 +529,7 @@ int MemberProfile::getLastIndexDate (string tempUser)
     }
     return i-1;
 }
-
+*/
 int MemberProfile::getLastIndexBookedFacilites (string tempUser)
 {
     int location = index(tempUser);
@@ -541,7 +541,7 @@ int MemberProfile::getLastIndexBookedFacilites (string tempUser)
     }
     return i-1;
 }
-
+/*
 int MemberProfile::getLastIndexTimeslot (string tempUser)
 {
     int location = index(tempUser);
@@ -559,3 +559,4 @@ int MemberProfile::getLastIndexTimeslot (string tempUser)
     }
     return i-1;
 }
+*/
