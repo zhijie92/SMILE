@@ -46,17 +46,16 @@ void Authentication::setPassword(string password)
     password = password;
 }
 
-int Authentication::verify(string username, string password, User u)
-{
-    int size = u.storeData();
-    
-    for (int i=0; i < size; i++)
+int Authentication::verify(string username, string password)
+{  
+    int tSize = storeData();
+    for (int i=0; i < tSize; i++)
     {
-        if (u.access[i].user == username)
+        if (access[i].user == username)
         {
-            if (u.access[i].pass == password)
+            if (access[i].pass == password)
             {
-                return u.access[i].role;
+                return access[i].role;
             }
             else
             {

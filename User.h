@@ -21,16 +21,19 @@
 const int MAX = 500;
 using namespace std;
 
-class User 
+class User
 {
-    friend class Authentication;
     public:
         User();
         User(const User& orig);
         virtual ~User();
         int storeData();
-        int accessData(string);
-        
+        int accessData(string); // returns the index when user = user
+        void change(int, string, string); // int in case 1 or 2,
+                                                // 1 = changing username / 2 = changing password
+                                                // 1st string takes in old user/pass 2nd takes in new user/pass
+                                                // 1 = changing username / 2 = changing password
+        void updateUserDB();
     private:
             
     protected:

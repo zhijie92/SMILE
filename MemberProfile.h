@@ -32,8 +32,21 @@ class MemberProfile: public User
         
         int index(string);
         void memberToArray();
+        void updateMemberDB();
         void displayParticulars(string);
-        void updateParticulars(string); //takes in unique NRIC 
+        void updateParticularsMenu(string&);  
+        
+        // takes in the index
+        void updateUsername(int, string&);
+        void updatePassword(int);
+        void updateName(int);
+        void updateNric(int);
+        void updateDOB(int);
+        void updateGender(int);
+        void updateAddress(int);
+        void updateBookingPreference(int);
+        void wantNotification(int);
+
         void upgradeRanking();
         void accessSearchPortal();
         void amendBooking();
@@ -59,7 +72,7 @@ class MemberProfile: public User
             string address;
             string bookingPreference;
             bool notification;
-        }memProfile[MAX];
+        } memProfile[MAX];
 };
 
 #endif /* MEMBERPROFILE_H */

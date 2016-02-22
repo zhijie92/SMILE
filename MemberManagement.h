@@ -13,14 +13,14 @@
 
 #ifndef MEMBERMANAGEMENT_H
 #define MEMBERMANAGEMENT_H
-
+#include "MemberProfile.h"
 #include <string>
 #include <iostream>
 #include <fstream>
 
 using namespace std;
 
-class MemberManagement 
+class MemberManagement: public MemberProfile 
 {
     
     public:
@@ -33,8 +33,11 @@ class MemberManagement
         void setUser(string);
         void setPassword(string);
         void setRole(int);
-        int addUser(string, string, int);
-        int removeUser(string, string);
+        
+        void addUser(string, string, int);
+        void removeUser(string);
+        void listMembers();
+        void listManagers();
         
     private:
         string username;

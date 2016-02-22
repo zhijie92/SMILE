@@ -15,6 +15,7 @@
 
 User::User()
 {
+    storeData();
 }
 
 User::User(const User& orig)
@@ -41,27 +42,60 @@ int User::storeData()
     while (afile >> access[tempSize].role)
     {
         afile.get(rubbish);
-        getline(afile,access[tempSize].user,',');
-        getline(afile,access[tempSize].pass);
+        getline(afile, access[tempSize].user,',');
+        getline(afile, access[tempSize].pass);
         tempSize++;
     }
     this -> size = tempSize;
-    
     afile.close();
     
     return tempSize;
 }
-/*
+
 int User::accessData(string tempUser)
 {
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < this -> size; i++)
     {
-        if (access[i].role == 2) // if member
+        if (this -> access[i].user == tempUser)
         {
-            if (access[i].user == tempUser)
-            {
-                return i;
-            }
+            return i;
         }
     }
-}*/
+}
+
+void User::change(int option, string tempOld, string tempNew)
+{
+    int location;
+    //1 = change username
+    //2 = change password
+    if (option == 1)
+    {
+        location = accessData(tempOld);
+        access[location].user = tempNew;
+    }
+    else if (option == 2)
+    {
+        location = accessData(tempOld);
+        access[location].pass = tempNew;
+    }
+    
+    updateUserDB();
+}
+
+void User::updateUserDB()
+{
+    fstream afile;
+    afile.open("userDB.txt",ios::out);
+    
+    if (!afile)
+    {
+        cout << "userDB Opened for writing fail" << endl;
+    }
+    
+    for (int i = 0; i < this -> size; i++)
+    {
+        afile << access[i].role << ',' << access[i].user << ',' << access[i].pass << endl;
+    }
+    
+    afile.close();   
+}

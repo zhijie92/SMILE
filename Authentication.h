@@ -20,7 +20,7 @@
 
 using namespace std;
 
-class Authentication
+class Authentication: public User
 {
     public:
         Authentication();
@@ -30,7 +30,7 @@ class Authentication
         string getPassword();
         void setUsername(string);
         void setPassword(string);
-        int verify(string, string, User);
+        int verify(string, string);
 
     private:
         string username; //store user's username

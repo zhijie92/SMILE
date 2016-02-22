@@ -20,7 +20,6 @@
 Authentication authenticate;
 MemberManagement memManage;
 FacilitiesManagement facManage;
-User u;
 MemberProfile memProf;
 int main()
 {
@@ -83,7 +82,7 @@ int mainMenu()
         }while (password.empty());
         cout << endl;
         
-        options = authenticate.verify(username, password, u);
+        options = authenticate.verify(username, password);
         
         flag = false;
     //go through authentication class for user and password and return 
@@ -101,14 +100,14 @@ int mainMenu()
     
     switch (options)
     {
-        case 1: clubManagerMenu();
+        case 1: clubManagerMenu(username);
                 break;
         case 2: memberMenu(username);
                 break;
         default: cout << "Error" << endl;
     }
 }
-void clubManagerMenu()
+void clubManagerMenu(string username)
 {   
     int options;
     do
@@ -131,7 +130,7 @@ void clubManagerMenu()
         {
             case 1: facilitiesManagement();
                    break;
-            case 2: memberManagement();
+            case 2: memberManagement(username);
                    break;
             case 3: cout << "test3" << endl;
                    break;
@@ -149,6 +148,7 @@ void memberMenu(string username)
     int options;
     do
     {
+        memProf.memberToArray();
         makePartition();
         cout << setw(50) << "Country Club Facilities Booking System" << endl;
         cout << setw(46) << "+++++++  Member's Menu  +++++++" << endl;
@@ -169,9 +169,10 @@ void memberMenu(string username)
         cin.ignore(300,'\n');
         switch (options)
         {
-            case 1: viewProfile(username);
-                   break;
-            case 2: cout << "test2" << endl;
+            case 1: memProf.displayParticulars(username);
+                    pressEnter();
+                    break;
+            case 2: memProf.updateParticularsMenu(username);
                    break;
             case 3: cout << "test3" << endl;
                    break;
@@ -258,15 +259,18 @@ void facilitiesManagement()
     }while (options != 9);
 }
 
-void memberManagement()
+void memberManagement(string username)
 {
     int options;
-    string newUser;
+    string newUser="123456";
     string newPassword;
     int newRole;
+    int isExist;
+    bool check = false;
     
     do
     {
+        isExist = 0;
         cout << setw(50) << "Country Club Facilities Booking System" << endl;
         cout << setw(49) << "++++ Member Management Sub-system ++++" << endl;   
         makePartition();
@@ -282,10 +286,17 @@ void memberManagement()
         cin.ignore(300,'\n');
         switch (options)
         {
-            case 1: int isExist;
-                    do
+            case 1: do
                     {
                         newPassword = "";
+                        
+                        if (newUser.length() < 6)
+                        {
+                            cout << endl;
+                            cout << "Error! Username needs to be at least 6 character long. " << endl;
+                            cout << endl;
+                        }
+                        
                         if (isExist == -2)
                         {
                             cout << endl;
@@ -302,14 +313,22 @@ void memberManagement()
                         }while (newUser.empty());
                         
                         // check for existing username
-                        isExist = authenticate.verify(newUser, newPassword, u);
-                    } while (isExist == -2);
-                   
+                        isExist = authenticate.verify(newUser, newPassword);
+                    } while (isExist == -2 || newUser.length() < 6);
+                    
+                    newPassword="123456";
                     do
                     {
+                        if (newPassword.length() < 6)
+                        {
+                            cout << endl;
+                            cout << "Error! Password needs to be at least 6 character long. " << endl;
+                            cout << endl;
+                        }
+                        
                         cout << "Password: ";
                         cin >> newPassword;
-                    }while (newPassword.empty());
+                    }while (newPassword.empty() || newPassword.length() < 6);
                     
                     do
                     {
@@ -325,14 +344,51 @@ void memberManagement()
                     memManage.addUser(newUser, newPassword, newRole);
                     pressEnter();
                    break;
-            case 2: cout << "delete" << endl;
-                   break;
-            case 3: cout << "List" << endl;
-                   break;
-            case 4: cout << "List" << endl;
-                   break;     
+            case 2: check = false;
+                    do
+                    {
+                        newPassword = "";
+                        
+                        if (isExist != -2 && check == true)
+                        {
+                            cout << endl;
+                            cout << "-----------------------------------------------" << endl;
+                            cout << "Username: " << newUser << " does not exists. " << endl;
+                            cout << "-----------------------------------------------" << endl;
+                            cout << endl;              
+                        }
+                      
+                        do
+                        {  
+                            cout << "Username: ";
+                            cin >> newUser;
+                            cin.clear();
+                            cin.ignore(300,'\n');
+                        }while (newUser.empty());
+                        
+                        // check for existing username
+                        isExist = authenticate.verify(newUser, newPassword);
+                        if (newUser == username)
+                        {
+                            cout << endl;
+                            cout << "Error! cannot delete account: " << newUser << "!" << endl;
+                            cout << "Account currently logged in!" << endl;
+                            isExist = 0;
+                        }
+                        check = true;
+                    } while (isExist != -2 || newUser.length() < 6);
+                    
+                    memManage.removeUser(newUser);
+                    pressEnter();
+                    break;
+            case 3: memManage.listMembers();
+                    pressEnter();
+                    break;
+            case 4: memManage.listManagers();
+                    pressEnter();
+                    break;     
             case 9:
-                   break;
+                    break;
             default: cout << "Please enter a valid option" << endl;
         }
     }while (options != 9);
@@ -341,9 +397,3 @@ void memberManagement()
 /*--------------------------------------------------------------------------------*/
 // CLUB MEMBER FUNCTIONS
 /*--------------------------------------------------------------------------------*/
-
-void viewProfile(string username)
-{
-    memProf.displayParticulars(username);
-    pressEnter();
-}
