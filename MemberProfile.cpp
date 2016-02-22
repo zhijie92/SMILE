@@ -608,6 +608,16 @@ int MemberProfile::getLastIndexBookedFacilites (string tempUser)
     return i-1;
 }
 
+int MemberProfile::getFacilityIndex (string tempUser, string fac_name)
+{
+    int location = index(tempUser);
+    int i = 0;
+    while (memProfile[location].bookedFacility[i].name != fac_name)
+    {
+        i++;
+    }
+    return i-1;
+}
 void MemberProfile::upgradeRanking(string tempUser)
 {
       int location = index(tempUser);

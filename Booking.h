@@ -34,11 +34,13 @@ public:
     int checkAlreadyBooked (string fac_name, int month, int day, int timeslot);
     int newBooking(string fac_name, int month, int day, string username, int timeslot);
     int viewBooking(string fac_name);
+    int checkBooking (string username, string fac_name, int month, int day, int timeslot);
+    int cancelBooking(string fac_name, int month, int day, string username, int timeslot);
 private:
     struct BookingDatesDB
     {
         Facilities facility;
-        int dates[12][31];
+        //int dates[12][31];
     };
     BookingDatesDB bookingdates[100];
     BookingDatesDB bookings;

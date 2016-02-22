@@ -517,7 +517,34 @@ void bookingMenu(string username)
                    break;
             case 2: booking.viewBooking(username);
                    break;
-            case 3: cout << "test3" << endl;
+            case 3: cout << "Facility Name: ";
+                    getline (cin, name);
+                    cout << "Day (e.g. 8 for 8th): ";
+                    cin >> day;
+                    cin.clear();
+                    cin.ignore(100, '\n');
+                    cout << "Month (e.g. 12 for December): ";
+                    cin >> month;
+                    cin.clear();
+                    cin.ignore(100, '\n');
+                    cout << "1.) 10am to 11am | 2.) 11am to 12pm | 3.) 12pm to 1pm | 4.) 1pm to 2pm | 5.) 2pm to 3pm" << endl;
+                    cout << "6.) 3pm to 4pm   | 7.) 4pm to 5pm   | 8.) 5pm to 6pm  | 9.) 6pm to 7pm | 10.) 7pm to 8pm" << endl;
+                    cout << "Time slot (e.g. 5 for 2pm to 3pm): ";
+                    cin >> timeslot;
+                    cin.clear();
+                    cin.ignore(100, '\n');
+                    check = booking.cancelBooking(name, month, day, username, timeslot);
+                    pressEnter();
+                    if (check == -1)
+                    {
+                        cout << "You have not booked " << name << " on " << day << "/" << month << " at Time slot " << timeslot << "!" << endl;
+                        pressEnter();
+                    }
+                    else if (check == -2)
+                    {
+                        cout << name << " does not exist!" << endl;
+                        pressEnter();
+                    }
                    break;
             case 9:
                    break;

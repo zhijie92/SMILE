@@ -55,6 +55,7 @@ class MemberProfile: public User
         void amendBooking();
         //int getLastIndexDate (string);
         int getLastIndexBookedFacilites (string);
+        int getFacilityIndex (string, string);
         //int getLastIndexTimeslot (string);
 
     protected:
