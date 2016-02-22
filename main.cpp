@@ -497,7 +497,7 @@ void bookingMenu(string username)
                     cin.ignore(100, '\n');
                     cout << "1.) 10am to 11am | 2.) 11am to 12pm | 3.) 12pm to 1pm | 4.) 1pm to 2pm | 5.) 2pm to 3pm" << endl;
                     cout << "6.) 3pm to 4pm   | 7.) 4pm to 5pm   | 8.) 5pm to 6pm  | 9.) 6pm to 7pm | 10.) 7pm to 8pm" << endl;
-                    cout << "Timeslot (e.g. 5 for 2pm to 3pm): ";
+                    cout << "Time slot (e.g. 5 for 2pm to 3pm): ";
                     cin >> timeslot;
                     cin.clear();
                     cin.ignore(100, '\n');
@@ -505,7 +505,7 @@ void bookingMenu(string username)
                     pressEnter();
                     if (check == -1)
                     {
-                        cout << name << " on " << day << "/" << month << " has already been booked!" << endl;
+                        cout << name << " on " << day << "/" << month << " at Time slot " << timeslot << " has already been booked!" << endl;
                         pressEnter();
                     }
                     else if (check == -2)

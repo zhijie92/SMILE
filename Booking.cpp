@@ -43,8 +43,8 @@ void Booking::fileToArray ()
         {
             for (int j = 0; j < 31; j++)
             {
-                afile >> bookingdates[s].dates[i][j];
-                afile.get (rubbish);
+                //afile >> bookingdates[s].dates[i][j];
+                //afile.get (rubbish);
                 for (int k = 0; k < 10; k++)
                 {
                     afile >> bookingdates[s].facility.timeslot[i][j][k];
@@ -81,7 +81,7 @@ void Booking::populate (string fac_name)
     {
         for (int j = 0; j < 31; j++)
         {
-            outfile << "0" << "-";
+            //outfile << "0" << "-";
             for (int k = 0; k < 10; k++)
             {
                 outfile << "0" << "|";
@@ -96,7 +96,7 @@ void Booking::populate (string fac_name)
     {
         for (int m = 0; m < 31; m++)
         {
-            bookingdates[s].dates[k][m] = 0;
+            //bookingdates[s].dates[k][m] = 0;
             for (int j = 0; j < 10; j++)
                 {
                     bookingdates[s].facility.timeslot[k][m][j] = 0;
@@ -112,8 +112,9 @@ int Booking::checkAlreadyBooked (string fac_name, int month, int day, int timesl
     {
         if (bookingdates[i].facility.name == fac_name)
         {
-            if ((bookingdates[i].dates[month-1][day-1] == 1) && 
-                (bookingdates[i].facility.timeslot[month-1][day-1][timeslot-1] == 1))
+            /*if ((bookingdates[i].dates[month-1][day-1] == 1) && 
+                (bookingdates[i].facility.timeslot[month-1][day-1][timeslot-1] == 1))*/
+            if (bookingdates[i].facility.timeslot[month-1][day-1][timeslot-1] == 1)
                 return 1;
             else
                 return 0;
@@ -167,7 +168,7 @@ int Booking::newBooking(string fac_name, int month, int day, string username, in
                      {
                          for (int m = 0; m < 31; m++)
                          {
-                             outfile << bookingdates[j].dates[k][m] << "-";
+                             //outfile << bookingdates[j].dates[k][m] << "-";
                              for (int p = 0; p < 10; p++)
                             {
                                 outfile << bookingdates[j].facility.timeslot[k][m][p] << "|";
