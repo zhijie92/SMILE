@@ -16,7 +16,7 @@
 
 MemberProfile::MemberProfile()
 {
-
+    memberToArray();
 }
 
 MemberProfile::MemberProfile(const MemberProfile& orig)
@@ -98,7 +98,7 @@ void MemberProfile::memberToArray()
             }
             afile.get(rubbish);
         }
-        afile.get(rubbish);
+       // afile.get(rubbish);
         tempSize++;
     }
     
@@ -289,7 +289,7 @@ void MemberProfile::updateMemberDB()
         {
             afile << "yes" << endl;
         }
-        for (int a = 0; a <= noOfBooking; a++)
+        for (int a = 0; a <= lastIndex; a++)
         {
             afile << memProfile[i].bookedFacility[a].name << ',';
             for (int d = 0; d < 12; d++)
@@ -306,6 +306,8 @@ void MemberProfile::updateMemberDB()
         }
         afile << endl;
     }
+    afile.clear();
+    afile.ignore(300,'\n');
     afile.close();
 }
 

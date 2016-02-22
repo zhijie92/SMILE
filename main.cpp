@@ -152,8 +152,7 @@ void memberMenu(string username)
     int options;
     do
     {
-        memProf.memberToArray();
-        //memProf.storeIndex(username);
+        memProf.storeIndex(username);
         makePartition();
         cout << setw(50) << "Country Club Facilities Booking System" << endl;
         cout << setw(46) << "+++++++  Member's Menu  +++++++" << endl;

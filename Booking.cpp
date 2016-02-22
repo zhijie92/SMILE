@@ -125,7 +125,6 @@ int Booking::newBooking(string fac_name, int month, int day, string username, in
 {
     int check = fac.checkExists (fac_name);
     int check2 = checkExists (fac_name);
-    
     if (check == 0)
         return -2;
     
@@ -178,6 +177,7 @@ int Booking::newBooking(string fac_name, int month, int day, string username, in
                 }
                 
                 outfile.close();
+                storeIndex(username);
                 updateMemberDB();
                 return 0;
             }
@@ -188,11 +188,12 @@ int Booking::newBooking(string fac_name, int month, int day, string username, in
 int Booking::viewBooking(string username)
 {
     int location = index(username);
-    int lastIndex = getLastIndexBookedFacilites(username);
+    //int tLastIndex = getLastIndexBookedFacilites(username);
     int m = 0;
     int d = 0;
     int t = 0;
-    for (int i = 0; i < lastIndex; i++)
+   // cout << "tLastIndex " << lastIndex << endl;
+    for (int i = 0; i <= lastIndex; i++)
     {
         cout << "Facility Name: " << memProfile[location].bookedFacility[i].name << endl;
         //mp.memProfile[location].bookedFacility[i].description;
