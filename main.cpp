@@ -514,7 +514,7 @@ void bookingMenu(string username)
                         pressEnter();
                     }    
                    break;
-            case 2: cout << "test2" << endl;
+            case 2: booking.viewBooking(username);
                    break;
             case 3: cout << "test3" << endl;
                    break;

@@ -52,9 +52,9 @@ class MemberProfile: public User
         void upgradeRanking();
         void accessSearchPortal();
         void amendBooking();
-        int getLastIndexDate (string);
+        //int getLastIndexDate (string);
         int getLastIndexBookedFacilites (string);
-        int getLastIndexTimeslot (string);
+        //int getLastIndexTimeslot (string);
 
     protected:
         int totalMember;
@@ -78,7 +78,7 @@ class MemberProfile: public User
             string bookingPreference;
             bool notification;
             Facilities bookedFacility[10];
-            Date bookedDates[10];
+            //Date bookedDates[10];
         } memProfile[MAX];
 };
 

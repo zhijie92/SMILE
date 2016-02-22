@@ -32,6 +32,7 @@ public:
     void populate (string fac_name);
     int checkAlreadyBooked (string fac_name, int month, int day, int timeslot);
     int newBooking(string fac_name, int month, int day, string username, int timeslot);
+    int viewBooking(string fac_name);
 private:
     struct BookingDatesDB
     {
