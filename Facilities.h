@@ -24,6 +24,7 @@ public:
     friend class FacilitiesManagement;
     friend class Booking;
     friend class MemberProfile;
+    friend class MemberManagement;
     Facilities();
     Facilities(const Facilities& orig);
     virtual ~Facilities();

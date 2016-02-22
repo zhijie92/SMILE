@@ -14,6 +14,7 @@
 #ifndef MEMBERMANAGEMENT_H
 #define MEMBERMANAGEMENT_H
 #include "MemberProfile.h"
+#include "Facilities.h"
 #include <string>
 #include <iostream>
 #include <fstream>

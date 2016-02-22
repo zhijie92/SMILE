@@ -16,6 +16,7 @@
 
 MemberProfile::MemberProfile()
 {
+
 }
 
 MemberProfile::MemberProfile(const MemberProfile& orig)
@@ -25,7 +26,10 @@ MemberProfile::MemberProfile(const MemberProfile& orig)
 MemberProfile::~MemberProfile()
 {
 }
-
+void MemberProfile::storeIndex(string tempUser)
+{
+    lastIndex = getLastIndexBookedFacilites(tempUser);
+}
 void MemberProfile::memberToArray()
 {
     fstream afile;
@@ -38,7 +42,7 @@ void MemberProfile::memberToArray()
     
     int tempSize = 0;
     char rubbish;
-
+    int noOfBooking = lastIndex;
     while (afile >> memProfile[tempSize].username)
     {
         afile.get(rubbish);
@@ -58,11 +62,29 @@ void MemberProfile::memberToArray()
         getline(afile,memProfile[tempSize].address);
         getline(afile,memProfile[tempSize].bookingPreference);
         afile >> memProfile[tempSize].notification; 
-        afile.clear ();
-	afile.ignore (MAX, '\n');
+        for (int i = 0; i <= noOfBooking; i++)
+        {
+            getline(afile,memProfile[tempSize].bookedFacility[i].name,',');
+            for (int d = 0; d < 12; d++)
+            {
+                for (int m = 0; m < 31; m++)
+                {
+                    for (int t = 0; t < 10; t++)
+                    {
+                        afile >> memProfile[tempSize].bookedFacility[i].timeslot[d][m][t];
+                        afile.get(rubbish);
+                    }
+                }           
+            }
+            afile.get(rubbish);
+        }
+        afile.get(rubbish);
         tempSize++;
     }
     
+    afile.clear ();
+    afile.ignore (MAX, '\n');
+    afile.close();
     this -> totalMember = tempSize;
 }
 
@@ -197,9 +219,10 @@ void MemberProfile::updateParticularsMenu(string& tempUser)
 
 void MemberProfile::updateMemberDB()
 {
+    int noOfBooking = lastIndex;
     fstream afile;
     afile.open("memberDB.txt",ios::out);
-    
+
     if (!afile)
     {
         cout << "MemberDB Opened for writing fail" << endl;
@@ -225,9 +248,23 @@ void MemberProfile::updateMemberDB()
         {
             afile << "yes" << endl;
         }
+        for (int a = 0; a <= noOfBooking; a++)
+        {
+            afile << memProfile[i].bookedFacility[a].name << ',';
+            for (int d = 0; d < 12; d++)
+            {
+                for (int m = 0; m < 31; m++)
+                {
+                    for (int t = 0; t < 10; t++)
+                    {
+                        afile << memProfile[i].bookedFacility[a].timeslot[d][m][t] << '/';
+                    }
+                }           
+            }
+            afile << endl;
+        }
         afile << endl;
     }
-    
     afile.close();
 }
 

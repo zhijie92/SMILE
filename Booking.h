@@ -20,9 +20,10 @@
 #include "FacilitiesManagement.h"
 #include "MemberProfile.h"
 
-class Booking {
+class Booking: public MemberProfile {
 public:
     friend class MemberProfile;
+    friend class MemberManagement;
     Booking();
     Booking(const Booking& orig);
     virtual ~Booking();

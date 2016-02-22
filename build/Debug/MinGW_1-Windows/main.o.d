@@ -1,6 +1,6 @@
 build/Debug/MinGW_1-Windows/main.o: main.cpp main.h Authentication.h \
- User.h MemberManagement.h MemberProfile.h Facilities.h Booking.h \
- FacilitiesManagement.h
+ User.h MemberManagement.h MemberProfile.h Facilities.h \
+ FacilitiesManagement.h Booking.h
 
 main.h:
 
@@ -14,6 +14,6 @@ MemberProfile.h:
 
 Facilities.h:
 
-Booking.h:
-
 FacilitiesManagement.h:
+
+Booking.h:

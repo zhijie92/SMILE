@@ -15,7 +15,7 @@
 
 MemberManagement::MemberManagement()
 {
-    memberToArray();
+
 }
 
 MemberManagement::MemberManagement(const MemberManagement& orig)
@@ -82,7 +82,24 @@ void MemberManagement::addUser(string username, string password, int role)
         memProfile[totalMember].address = "Not applicable";
         memProfile[totalMember].bookingPreference = "Not applicable";
         memProfile[totalMember].notification = 0;
-
+        for (int a = 0; a < 10; a++)
+        {
+            memProfile[totalMember].bookedFacility[a].name = "";
+        }
+        for (int b = 0; b < 10; b++)
+        {
+            for (int m = 0; m < 12; m++)
+            {               
+                for (int d = 0; d < 31; d++)
+                {
+                    for (int t = 0; t < 10; t++)
+                    {
+                        memProfile[totalMember].bookedFacility[b].timeslot[m][d][t] = 0;
+                    }
+                }   
+            }
+        }
+    
         totalMember+=1;
         
         updateMemberDB();
@@ -140,6 +157,24 @@ void MemberManagement::removeUser(string username)
             memProfile[i].address = memProfile[i+1].address;
             memProfile[i].bookingPreference = memProfile[i+1].bookingPreference;
             memProfile[i].notification =  memProfile[i+1].notification;
+            for (int a = 0; a < 10; a++)
+            {
+                memProfile[i].bookedFacility[a].name = memProfile[i+1].bookedFacility[a].name;
+            }
+            
+            for (int b = 0; b < 10; b++)
+            {
+                for (int m = 0; m < 12; m++)
+                {               
+                    for (int d = 0; d < 31; d++)
+                    {
+                        for (int t = 0; t < 10; t++)
+                        {
+                            memProfile[i].bookedFacility[b].timeslot[m][d][t] = memProfile[i+1].bookedFacility[b].timeslot[m][d][t];
+                        }
+                    }   
+                }
+            }
         }
         totalMember-=1;
         updateMemberDB();

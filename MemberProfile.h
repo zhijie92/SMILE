@@ -21,7 +21,6 @@
 #include <iomanip>
 #include <cstdlib>
 #include "Facilities.h"
-#include "Booking.h"
 
 using namespace std;
 class MemberProfile: public User
@@ -37,6 +36,7 @@ class MemberProfile: public User
         void updateMemberDB();
         void displayParticulars(string);
         void updateParticularsMenu(string&);  
+        void storeIndex(string);
         
         // takes in the index
         void updateUsername(int, string&);
@@ -58,7 +58,7 @@ class MemberProfile: public User
 
     protected:
         int totalMember;
-        
+        int lastIndex;
         //dd-mm-yyyy
         struct Date
         {

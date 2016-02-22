@@ -14,7 +14,6 @@
 #include "Booking.h"
 
 FacilitiesManagement fac;
-MemberProfile mp;
 int s = 0;
 
 Booking::Booking()
@@ -136,27 +135,27 @@ int Booking::newBooking(string fac_name, int month, int day, string username, in
     int check3 = checkAlreadyBooked (fac_name, month, day, timeslot);
     if (check3 == 1)
         return -1;
-    int location = mp.index(username);
+    int location = index(username);
     if (check == 1 && check3 == 0)
     {
         fstream outfile;
         outfile.open("BookingDatesDB.txt",ios::out | ios::trunc);
-
+       
         for (int i=0; i < s; i++)
         {
             if (bookingdates[i].facility.name == fac_name)
             {
                 bookingdates[i].dates[month-1][day-1] = 1;
                 bookingdates[i].facility.timeslot[month-1][day-1][timeslot-1] = 1;
-                int index1 = mp.getLastIndexBookedFacilites(username);
+                int index1 = getLastIndexBookedFacilites(username);
                 //int index2 = mp.getLastIndexDate(username);
                 //int index3 = mp.getLastIndexTimeslot (username);
                 
-                mp.memProfile[location].bookedFacility[index1+1].name = fac_name;
-                mp.memProfile[location].bookedFacility[index1+1].description = bookingdates[i].facility.description;
-                mp.memProfile[location].bookedFacility[index1+1].rates = bookingdates[i].facility.rates;
+                memProfile[location].bookedFacility[index1+1].name = fac_name;
+                memProfile[location].bookedFacility[index1+1].description = bookingdates[i].facility.description;
+                memProfile[location].bookedFacility[index1+1].rates = bookingdates[i].facility.rates;
                 //mp.memProfile[location].bookedFacility[index1+1].timeslot[0][0][index3+1] = 1;
-                mp.memProfile[location].bookedFacility[index1+1].timeslot[month-1][day-1][timeslot-1] = 1;
+                memProfile[location].bookedFacility[index1+1].timeslot[month-1][day-1][timeslot-1] = 1;
                 //mp.memProfile[location].bookedDates[index2+1].day = day;
                 //mp.memProfile[location].bookedDates[index2+1].month = month;
                 
@@ -178,6 +177,7 @@ int Booking::newBooking(string fac_name, int month, int day, string username, in
                 }
                 
                 outfile.close();
+                updateMemberDB();
                 return 0;
             }
         }
@@ -186,14 +186,14 @@ int Booking::newBooking(string fac_name, int month, int day, string username, in
 
 int Booking::viewBooking(string username)
 {
-    int location = mp.index(username);
-    int lastIndex = mp.getLastIndexBookedFacilites(username);
+    int location = index(username);
+    int lastIndex = getLastIndexBookedFacilites(username);
     int m = 0;
     int d = 0;
     int t = 0;
     for (int i = 0; i < lastIndex; i++)
     {
-        cout << "Facility Name: " << mp.memProfile[location].bookedFacility[i].name << endl;
+        cout << "Facility Name: " << memProfile[location].bookedFacility[i].name << endl;
         //mp.memProfile[location].bookedFacility[i].description;
         //mp.memProfile[location].bookedFacility[i].rates;
         for (m = 0; m < 12; m++)
@@ -202,7 +202,7 @@ int Booking::viewBooking(string username)
             {
                 for (t = 0; t < 10; t++)
                 {
-                    if (mp.memProfile[location].bookedFacility[i].timeslot[m][d][t] == 1)
+                    if (memProfile[location].bookedFacility[i].timeslot[m][d][t] == 1)
                     {
                         switch (t)
                         {
