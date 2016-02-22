@@ -502,6 +502,7 @@ void bookingMenu(string username)
                     cin.clear();
                     cin.ignore(100, '\n');
                     check = booking.newBooking(name, month, day, username, timeslot);
+                    pressEnter();
                     if (check == -1)
                     {
                         cout << name << " on " << day << "/" << month << " has already been booked!" << endl;

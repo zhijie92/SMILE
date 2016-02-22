@@ -52,6 +52,8 @@ void Booking::fileToArray ()
                 }
             }
         }
+        afile.clear();
+        afile.ignore(300,'\n');
         s++;
     }
     afile.close();
